@@ -47,12 +47,19 @@ class Usuario(AbstractBaseUser):
         ('Supervisor de módulo', 'Supervisor de módulo'),
         ('Personal de módulo', 'Personal de módulo'),
     )
+    CATEGORIAS_CONTRATACION = (
+        ('Estructura', 'Estructura'),
+        ('Nomina 8', 'Nomina 8'),
+        ('Honorarios', 'Honorarios'),
+        ('Base con digito sindical', 'Base con digito sindical'),
+        ('Base sin digito sindical', 'Base sin digito sindical'),
+    )
     
     username = models.CharField("Nombre de usuario", max_length=100, unique=True)
     nombres = models.CharField("Nombre(s)", max_length=200)
     apellido_paterno = models.CharField("Apellido paterno", max_length=200)
     apellido_materno = models.CharField("Apellido materno", max_length=200, blank=True, null=True)
-    tipo_contratacion = models.CharField("Tipo de contratación", max_length=50)
+    tipo_contratacion = models.CharField("Tipo de contratación", max_length=50, choices=CATEGORIAS_CONTRATACION)
     numero_empleado = models.PositiveIntegerField("Número de empleado")
     tipo_usuario = models.CharField("Tipo de usuario", max_length=21, choices=CATEGORIAS_USUARIOS)
     email = models.EmailField("Correo electrónico", max_length=100, unique=True)

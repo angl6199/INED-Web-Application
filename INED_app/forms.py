@@ -53,8 +53,14 @@ class FormaRegistro(forms.ModelForm):
         ('Supervisor de módulo', 'Supervisor de módulo'),
         ('Personal de módulo', 'Personal de módulo'),
     )
-
-    
+    CATEGORIAS_CONTRATACION = (
+        ('-', '-'),
+        ('Estructura', 'Estructura'),
+        ('Nomina 8', 'Nomina 8'),
+        ('Honorarios', 'Honorarios'),
+        ('Base con digito sindical', 'Base con digito sindical'),
+        ('Base sin digito sindical', 'Base sin digito sindical'),
+    )
 
     password1 = forms.CharField(label = 'Contraseña', widget=forms.PasswordInput(
         attrs = {'class':'register-field','placeholder':'Escribe la contraseña', 'required':'required'}
@@ -64,7 +70,9 @@ class FormaRegistro(forms.ModelForm):
         attrs = {'class':'register-field','placeholder':'Escribe nuevamente la contraseña', 'required':'required'}
     ))
 
-    tipo_usuario = forms.ChoiceField(choices=CATEGORIAS_USUARIOS, label='Tipo de usuario', widget=forms.Select(attrs = {'class':'register-field'},choices=CATEGORIAS_USUARIOS))
+    tipo_contratacion = forms.ChoiceField(choices=CATEGORIAS_CONTRATACION, label='Tipo de contratación', widget=forms.Select(attrs = {'class':'register-field'}))
+
+    tipo_usuario = forms.ChoiceField(choices=CATEGORIAS_USUARIOS, label='Tipo de usuario', widget=forms.Select(attrs = {'class':'register-field'}))
 
     class Meta:
         model = Usuario
