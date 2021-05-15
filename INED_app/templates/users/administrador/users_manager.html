@@ -1,16 +1,8 @@
-{% extends 'layout.html' %}
+{% extends 'users/administrador/administrador_layout.html' %}
 {% load static %}
 {% block extracss %}
 <link rel="stylesheet" href="{% static 'libraries\bootstrap-5.0.0-beta3-dist\css\bootstrap.min.css' %}">
 <link rel="stylesheet" href="{% static 'libraries\DataTables\datatables.min.css' %}">
-{% endblock %}
-{% block menu %}
-<ul>
-    <li><a class='selected' href="{% url 'administrador' %}">Gestionar usuarios</a></li>
-    <li><a href="{% url 'administrador' %}">Gestionar adultos mayores</a></li>
-    <li><a href="{% url 'administrador' %}">Solicitudes de edición</a></li>
-    <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
-</ul>
 {% endblock %}
 
 {% block content %}
@@ -39,7 +31,7 @@
         </select>
         <label id="user-label2" for="user-search">Datos de búsqueda:</label>
         <input readonly id="user-search" name="user-search" class="register-field" type="search" placeholder="{{searchInput}}">
-        <a class="btn-nuevo-usuario" href="{% url 'administrador' %}">Borrar búsqueda </a>
+        <a class="btn-nuevo-usuario" href="{% url 'users-manager' %}">Borrar búsqueda </a>
         {% endif %}
         </form>
         <a class="btn-nuevo-usuario" href="{% url 'registrar_usuario' %}">Crear Usuario <img class="btn-img" src="{% static 'images/plus1_icon.png' %}" alt=""></a>

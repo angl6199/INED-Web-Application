@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+{% block menu %}
+<ul>
+    <li><a class='selected' href="{% url 'users-manager' %}">Gestionar usuarios</a></li>
+    <li><a href="{% url 'users-manager' %}">Gestionar adultos mayores</a></li>
+    <li><a href="{% url 'users-manager' %}">Solicitudes de edición</a></li>
+    <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+</ul>
+{% endblock %}

@@ -1,17 +1,12 @@
-{% extends 'layout.html' %}
-
-{% block menu %}
-<ul>
-    <li><a class='selected' href="{% url 'administrador' %}">Gestionar usuarios</a></li>
-    <li><a href="{% url 'administrador' %}">Gestionar adultos mayores</a></li>
-    <li><a href="{% url 'administrador' %}">Solicitudes de edición</a></li>
-    <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
-</ul>
-{% endblock %}
+{% extends 'users/administrador/administrador_layout.html' %}
 
 {% block content %}
 <form class='registerform' method = "POST" enctype = "multipart/form-data">
-    <h1>Regitstrar usuario nuevo</h1>
+    <h1 class='form-head-title'>Edición de Usuario</h1>
+    <div class="user-hd-form-container">
+    <h1>{{user.nombres}} {{user.apellido_paterno}}</h1>
+    <img class="user-pp" src="{{user.foto.url}}">
+    </div>
     {% csrf_token %}
     {{form.as_p}}
     {% if form.errors %}
@@ -34,6 +29,6 @@
             {% endifequal %} 
         {% endfor %}
     {% endif %}
-    <button type = "submit" style="cursor:pointer" class = "btn btn-primary">REGISTRAR</button>
+    <button type = "submit" style="cursor:pointer" class = "btn btn-primary">Guardar</button>
 </form>
 {% endblock %}

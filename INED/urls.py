@@ -26,7 +26,7 @@ urlpatterns = [
     path('', INED_app.views.Login.as_view()),
     path('login/', INED_app.views.Login.as_view(), name = 'login'),
     path('logout/', login_required(INED_app.views.Logout.as_view()), name = 'logout'),
-    path('administrador/', login_required(INED_app.views.Administrador.as_view()), name = 'administrador'),
+    path('users-admin/', login_required(INED_app.views.Administrador.as_view()), name = 'users-manager'),
     path('monitor/', login_required(INED_app.views.Monitor.as_view()), name = 'monitor'),
     path('supervisor/', login_required(INED_app.views.Supervisor.as_view()), name = 'supervisor'),
     path('personal/', login_required(INED_app.views.Personal.as_view()), name = 'personal'),

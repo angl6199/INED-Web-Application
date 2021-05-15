@@ -17,7 +17,7 @@ def prueba(request, tipo_usuario):
         
 class Administrador(ListView):
     model = Usuario
-    template_name = 'administrador.html'
+    template_name = 'users_manager.html'
     # queryset = Usuario.objects.filter()
 
     def get(self, request, *args, **kwargs):
@@ -49,7 +49,7 @@ class Administrador(ListView):
             search = False
             users = Usuario.objects.filter()
         
-        return render(request, 'administrador.html', {'users':users, 'search':search, 'searchInput':searchInput, 'field':field})
+        return render(request, 'users/administrador/users_manager.html', {'users':users, 'search':search, 'searchInput':searchInput, 'field':field})
     
     def dispatch(self, request, *args, **kwargs):
         if prueba(request, 'Administrador'):
@@ -91,7 +91,7 @@ class Logout(View):
 class Login(View):
     def defineUserURL(self, request):
         if request.user.tipo_usuario == 'Administrador':
-            return redirect('administrador')
+            return redirect('users-manager')
         if request.user.tipo_usuario == 'Monitor':
             return redirect('monitor')
         if request.user.tipo_usuario == 'Supervisor de módulo':
@@ -135,8 +135,8 @@ def editarAutor(request, id):
         user_form = FormaRegistro(request.POST, request.FILES, instance=usuario)
         if user_form.is_valid():
             user_form.save()
-        return redirect('administrador')
-    return render(request, 'users/editar_usuario.html', {'form':user_form, 'user':usuario})
+        return redirect('users-manager')
+    return render(request, 'users/administrador/editar_usuario.html', {'form':user_form, 'user':usuario})
 
 def eliminarUsuario(request, id):
     usuario = Usuario.objects.get(id = id)
@@ -144,8 +144,8 @@ def eliminarUsuario(request, id):
         user_form = FormaVisualizar(instance = usuario)
     else:
         usuario.delete()
-        return redirect('administrador')
-    return render(request, 'users/eliminar_usuario.html', {'form':user_form, 'user':usuario})
+        return redirect('users-manager')
+    return render(request, 'users/administrador/eliminar_usuario.html', {'form':user_form, 'user':usuario})
 
 def reactivarUsuario(request, id):
     usuario = Usuario.objects.get(id = id)
@@ -153,28 +153,28 @@ def reactivarUsuario(request, id):
         user_form = FormaVisualizar(instance = usuario)
     else:
         usuario.reactive()
-        return redirect('administrador')
-    return render(request, 'users/reactivar_usuario.html', {'form':user_form, 'user':usuario})
+        return redirect('users-manager')
+    return render(request, 'users/administrador/reactivar_usuario.html', {'form':user_form, 'user':usuario})
 
 def verAutor(request, id):
     usuario = Usuario.objects.get(id = id)
     if request.method == 'GET':
         user_form = FormaVisualizar(instance = usuario)
-    return render(request, 'users/ver_usuario.html', {'form':user_form, 'user':usuario})
+    return render(request, 'users/administrador/ver_usuario.html', {'form':user_form, 'user':usuario})
     
 
 class RegistrarUsuario(CreateView):
     def get(self, request, *args, **kwargs):
         form = FormaRegistro()
         if request.user.tipo_usuario == 'Administrador':
-            return render(request, 'users/crear_usuario.html', {'form': form})
+            return render(request, 'users/administrador/crear_usuario.html', {'form': form})
         else:
-            return redirect('administrador')
+            return redirect('users-manager')
 
     def post(self, request, *args, **kwargs):
         form = FormaRegistro(request.POST, request.FILES)
         if form.is_valid():
             usuario = form.save()
-            return redirect('administrador')
-        return render(request, 'users/crear_usuario.html', {'form': form})
+            return redirect('users-manager')
+        return render(request, 'users/administrador/crear_usuario.html', {'form': form})
 
