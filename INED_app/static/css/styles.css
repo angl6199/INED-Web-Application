@@ -217,12 +217,17 @@ section{
 }
 
 /*View form styles*/
+.form-head-title{
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: 28px;
+}
 .user-pp{
     width: 140px;
     height: 140px;
     border-radius: 100%;
     margin-right: 80px;
-    border: 6px solid #1bb600af;
+    border: 6px solid #1BB600;
 }
 .user-hd-form-container{
     display: flex;

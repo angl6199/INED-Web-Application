@@ -11,7 +11,11 @@
 
 {% block content %}
 <form class='registerform' method='POST' enctype = "multipart/form-data">
-    <h1>Reactivar Usuario</h1>
+    <h1 class='form-head-title'>Reactivación de Usuario</h1>
+    <div class="user-hd-form-container">
+    <h1>{{user.nombres}} {{user.apellido_paterno}}</h1>
+    <img class="user-pp" src="{{user.foto.url}}">
+    </div>
     {% csrf_token %}
     {{form.as_p}}
     {% if form.errors %}

@@ -4,11 +4,6 @@ from .models import Usuario
 from django.forms import ModelForm
 from django.forms import widgets
 
-class MyClearableFileInput(ClearableFileInput):
-    initial_text = None
-    input_text = 'Cambiar fotografía'
-    clear_checkbox_label = None
-
 class FormaLogin(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super(FormaLogin, self).__init__(*args, **kwargs)
@@ -59,6 +54,8 @@ class FormaRegistro(forms.ModelForm):
         ('Personal de módulo', 'Personal de módulo'),
     )
 
+    
+
     password1 = forms.CharField(label = 'Contraseña', widget=forms.PasswordInput(
         attrs = {'class':'register-field','placeholder':'Escribe la contraseña', 'required':'required'}
     ))
@@ -97,6 +94,8 @@ class FormaRegistro(forms.ModelForm):
             'numero_telefonico': forms.NumberInput(
                 attrs = {'class':'register-field','autocomplete': 'off', 'placeholder':'Número Telefónico'}
             ),
+            'foto': forms.FileInput()
+            
         }
     
     def clean_password2(self):

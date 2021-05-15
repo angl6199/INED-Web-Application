@@ -104,7 +104,7 @@ def editarAutor(request, id):
         if user_form.is_valid():
             user_form.save()
         return redirect('administrador')
-    return render(request, 'users/editar_usuario.html', {'form':user_form})
+    return render(request, 'users/editar_usuario.html', {'form':user_form, 'user':usuario})
 
 def eliminarUsuario(request, id):
     usuario = Usuario.objects.get(id = id)
@@ -113,7 +113,7 @@ def eliminarUsuario(request, id):
     else:
         usuario.delete()
         return redirect('administrador')
-    return render(request, 'users/eliminar_usuario.html', {'form':user_form})
+    return render(request, 'users/eliminar_usuario.html', {'form':user_form, 'user':usuario})
 
 def reactivarUsuario(request, id):
     usuario = Usuario.objects.get(id = id)
@@ -122,7 +122,7 @@ def reactivarUsuario(request, id):
     else:
         usuario.reactive()
         return redirect('administrador')
-    return render(request, 'users/reactivar_usuario.html', {'form':user_form})
+    return render(request, 'users/reactivar_usuario.html', {'form':user_form, 'user':usuario})
 
 def verAutor(request, id):
     usuario = Usuario.objects.get(id = id)
