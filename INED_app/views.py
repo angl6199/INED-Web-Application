@@ -6,6 +6,7 @@ from .forms import *
 from .models import Usuario
 from django.urls import reverse_lazy
 from django.http import Http404
+from django.db.models import Q
 
 # Create your views here.
 def prueba(request, tipo_usuario):
@@ -17,7 +18,36 @@ def prueba(request, tipo_usuario):
 class Administrador(ListView):
     model = Usuario
     template_name = 'administrador.html'
-    queryset = Usuario.objects.filter()
+    # queryset = Usuario.objects.filter()
+
+    def get(self, request, *args, **kwargs):
+        field = request.GET.get('campo-busqueda')
+        searchInput = request.GET.get('user-search')
+        if searchInput != None:
+            if field == 'nombres':
+                users = Usuario.objects.filter(
+                    Q(nombres__icontains = searchInput)
+                )
+            if field == 'apellido_paterno':
+                users = Usuario.objects.filter(
+                    Q(apellido_paterno__icontains = searchInput)
+                )
+            if field == 'apellido_materno':
+                users = Usuario.objects.filter(
+                    Q(apellido_materno__icontains = searchInput)
+                )
+            if field == 'numero_empleado':
+                users = Usuario.objects.filter(
+                    Q(numero_empleado = searchInput)
+                )
+            if field == 'usuario':
+                users = Usuario.objects.filter(
+                    Q(username__icontains = searchInput)
+                )
+        else:
+            users = Usuario.objects.filter()
+        
+        return render(request, 'administrador.html', {'users':users})
     
     def dispatch(self, request, *args, **kwargs):
         if prueba(request, 'Administrador'):

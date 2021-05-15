@@ -23,9 +23,11 @@
         <label for="campo-busqueda">Buscar por:</label>
         <form class="search-cont" method="get">
         <select class="register-field select1" name="campo-busqueda" id="campo-busqueda">
-            <option value="nombre">Nombre(s)</option>
-            <option value="apellido">Apellidos</option>
-            <option value="usuario">Usuario</option>
+            <option value="nombres">Nombre(s)</option>
+            <option value="apellido_paterno">Apellido Paterno</option>
+            <option value="apellido_materno">Apellido Materno</option>
+            <option value="numero_empleado">No. Empleado</option>
+            <option value="username">Usuario</option>
         </select>
         <label id="user-label2" for="user-search">Datos de búsqueda:</label>
         <input required id="user-search" name="user-search" class="register-field" type="search" placeholder="Ingresa los datos de búsqueda">
@@ -34,7 +36,7 @@
         <a class="btn-nuevo-usuario" href="{% url 'registrar_usuario' %}">Crear Usuario <img class="btn-img" src="{% static 'images/plus1_icon.png' %}" alt=""></a>
     </div>
     
-    {% if object_list %}
+    {% if users %}
     <table id="tabla-usuarios">
         <thead>
         <tr id="tabla-usuario-fr">
@@ -48,33 +50,33 @@
         </tr>
         </thead>
         <tbody>
-        {% for object in object_list %}
+        {% for user in users %}
         <tr>
-            <td class='tabla-celda tabla-largo'>{{object.nombres}}</td>
-            <td class='tabla-celda'>{{object.apellido_paterno}}</td>
+            <td class='tabla-celda tabla-largo'>{{user.nombres}}</td>
+            <td class='tabla-celda'>{{user.apellido_paterno}}</td>
             <td class="tabla-celda">
-            {% if object.apellido_materno is not None %}
-            {{object.apellido_materno}}
+            {% if user.apellido_materno is not None %}
+            {{user.apellido_materno}}
             {% endif %}
             </td>
-            <td class='tabla-celda tabla-menos'>{{object.numero_empleado}}</td>
-            <td class='tabla-celda tabla-perfil'>{{object.tipo_usuario}}</td>
+            <td class='tabla-celda tabla-menos'>{{user.numero_empleado}}</td>
+            <td class='tabla-celda tabla-perfil'>{{user.tipo_usuario}}</td>
             <td class='tabla-celda tabla-menos'>
-            {% if object.active is True %}
+            {% if user.active is True %}
             <span class="active-indicator">Activo</span>
             {% endif %}
-            {% if object.active is False %}
+            {% if user.active is False %}
             <span class="inactive-indicator">Inactivo</span>
             {% endif %}
             </td>
             <td class='tabla-celda celda-botones'>
-            <a href="{% url 'ver_usuario' object.id %}" class="boton-editar"><img class="btn-img" src="{% static 'images/view_icon.png' %}" alt=""></a>
-            <a href="{% url 'editar_usuario' object.id %}" class="boton-editar"><img class="btn-img" src="{% static 'images/edit_icon.png' %}" alt=""></a>
-            {% if object.active is True %}
-            <a href="{% url 'eliminar_usuario' object.id %}" class="boton-eliminar"><img class="btn-img" src="{% static 'images/trash_icon.png' %}" alt=""></a></td>
+            <a href="{% url 'ver_usuario' user.id %}" class="boton-editar"><img class="btn-img" src="{% static 'images/view_icon.png' %}" alt=""></a>
+            <a href="{% url 'editar_usuario' user.id %}" class="boton-editar"><img class="btn-img" src="{% static 'images/edit_icon.png' %}" alt=""></a>
+            {% if user.active is True %}
+            <a href="{% url 'eliminar_usuario' user.id %}" class="boton-eliminar"><img class="btn-img" src="{% static 'images/trash_icon.png' %}" alt=""></a></td>
             {% endif %}
-            {% if object.active is False %}
-            <a href="{% url 'reactivar_usuario' object.id %}" class="boton-eliminar"><img class="btn-img" src="{% static 'images/check_icon.png' %}" alt=""></a></td>
+            {% if user.active is False %}
+            <a href="{% url 'reactivar_usuario' user.id %}" class="boton-eliminar"><img class="btn-img" src="{% static 'images/check_icon.png' %}" alt=""></a></td>
             {% endif %}
         </tr>
         {% endfor %}
