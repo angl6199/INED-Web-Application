@@ -500,3 +500,14 @@ footer div ul{
 .res{
     font-weight: 600;
 }
+.failed-search-container{
+    background-color: #1BB600;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    box-shadow: 1px 1px 5px 1px rgb(0 0 0 / 20%);
+}
+.failed-search-h1{
+    text-align: center;
+    padding: 20px 0px;
+    color: white;
+}

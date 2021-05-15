@@ -53,7 +53,7 @@
             <th>Apellido Paterno</th>
             <th>Apellido Materno</th>
             <th>No. Empleado</th>
-            <th>Rol Usuario</th>
+            <th>Usuario</th>
             <th>Estado</th>
             <th id="acc-hd">Acciones</th>
         </tr>
@@ -69,7 +69,7 @@
             {% endif %}
             </td>
             <td class='tabla-celda tabla-menos'>{{user.numero_empleado}}</td>
-            <td class='tabla-celda tabla-perfil'>{{user.tipo_usuario}}</td>
+            <td class='tabla-celda tabla-perfil'>{{user.username}}</td>
             <td class='tabla-celda tabla-menos'>
             {% if user.active is True %}
             <span class="active-indicator">Activo</span>
@@ -91,6 +91,11 @@
         {% endfor %}
     </tbody>
     </table>
+    {% elif not users %}
+        <div class="failed-search-container">
+            <h1 class="failed-search-h1">Búsqueda sin resultados</h1>
+        </div>
+
     {% endif %}
 
 </div>
