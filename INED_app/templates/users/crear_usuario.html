@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block menu %}
+<ul>
+    <li><a class='selected' href="{% url 'administrador' %}">Gestionar usuarios</a></li>
+    <li><a href="{% url 'administrador' %}">Gestionar adultos mayores</a></li>
+    <li><a href="{% url 'administrador' %}">Solicitudes de edición</a></li>
+    <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<form class='registerform' method = "POST" enctype = "multipart/form-data">
+    <h1>Regitstrar usuario nuevo</h1>
+    {% csrf_token %}
+    {{form.as_p}}
+    {% if form.errors %}
+    <script>
+    let inputs = document.querySelectorAll('.register-field')
+        for (let index = 0; index < inputs.length; index++) {
+            if (index != 3){
+                inputs[index].value = '';
+            }}
+    </script>
+        {% for error in form.errors %}
+            {% ifequal error 'password2' %}
+                <h2 class="error">Las contraseñas no coinciden</h2>
+            {% endifequal %} 
+            {% ifequal error 'tipo_usuario' %}
+                <h2 class="error">Tipo de usuario inválido</h2>
+            {% endifequal %} 
+            {% ifequal error 'username' %}
+                <h2 class="error">Nombre de usuario ya ocupado</h2>
+            {% endifequal %} 
+        {% endfor %}
+    {% endif %}
+    <button type = "submit" style="cursor:pointer" class = "btn btn-primary">REGISTRAR</button>
+</form>
+{% endblock %}

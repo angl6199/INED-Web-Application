@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="shortcut icon" href="{% static 'images/icon_CDMX.png' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <title>INED</title>
+</head>
+
+<body>
+    <header>
+        <div>
+            <img src="{% static 'images/logo_CDMX.png' %}" alt="">
+            <h1>INSTITUTO PARA EL ENVEJECIMIENTO DIGNO</h1>
+        </div>
+    </header>
+
+    <div class="logbox">
+        <form class="logform" method="POST" action="">
+        {% csrf_token %}
+        <h1 class="logtitle">Inicia sesión</h1>
+            
+            <label for="username">Nombre de usuario:</label>
+            <input autocomplete="off" class="field" type="text" placeholder="Escribe tu nombre de usuario" name="username">
+            
+            <label for="password">Contraseña:</label>
+            <input class="field" type="password" placeholder="Escribe tu contraseña" name="password">
+        
+            {% if messages %}
+                {% for message in messages %}
+                    <h2 class="error">{{message}}</h2>
+                {% endfor %}
+            {% endif %}
+            <input style="cursor:pointer" class="boton1" type="submit" value="Iniciar sesión">
+        </form>
+    </div>
+    <footer class="logfooter">
+        <div id="f1">
+            <h1>INSTITUTO NACIONAL DEL ENVEJECIMIENTO DIGNO</h1>
+            <ul>
+                <li class="res">Contacto de ayuda:</li>
+                <li>5555-5555</li>
+            </ul>
+        </div>
+        <div id="f2">
+            <ul>
+                <li class="res">CMS CDMX v2.8.1 2021</li>
+                <li>Términos y Condiciones</li>
+                <li>Política de Privacidad</li>
+                <li>Licencia de Gobierno Abierto</li>
+            </ul>
+        </div>
+    </footer>
+</body>
+
+<script>
+    var actual = "{{actual}}"
+</script>
+<script src="{% static 'js/mainscript.js' %}"></script>
+
+</html>

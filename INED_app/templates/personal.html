@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block menu %}
+<ul>
+    <li><a href="{% url 'personal' %}">Consultar adultos mayores</a></li>
+    <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<h1>Página de personal de módulo</h1>
+{% endblock %}

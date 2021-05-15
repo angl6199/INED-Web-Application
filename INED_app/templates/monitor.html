@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block menu %}
+<ul>
+    <li><a href="{% url 'monitor' %}">Consultar adultos mayores</a></li>
+    <li><a href="{% url 'monitor' %}" id="priv">Solicitudes enviadas</a></li>
+    <li><a href="{% url 'monitor' %}">Solicitudes recibidas</a></li>
+    <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<h1>Página de monitor</h1>
+{% endblock %}

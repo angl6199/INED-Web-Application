@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="shortcut icon" href="{% static 'images/icon_CDMX.png' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    {% block extracss %}
+    {% endblock %}
+
+    <title>INED</title>
+</head>
+
+<body>
+    <header>
+        <div>
+            <img src="{% static 'images/logo_CDMX.png' %}" alt="">
+            <h1>INSTITUTO PARA EL ENVEJECIMIENTO DIGNO</h1>
+        </div>
+        <nav>
+            {% block menu %}
+            {% endblock %}
+        </nav>
+        <hr id="line">
+        </hr>
+    </header>
+
+    <section>
+        {% block content %}
+        {% endblock %}
+    </section>
+
+    <footer>
+        <div id="f1">
+            <h1>INSTITUTO NACIONAL DEL ENVEJECIMIENTO DIGNO</h1>
+            <ul>
+                <li class="res">Contacto de ayuda:</li>
+                <li>5555-5555</li>
+            </ul>
+        </div>
+        <div id="f2">
+            <ul>
+                <li class="res">CMS CDMX v2.8.1 2021</li>
+                <li>Términos y Condiciones</li>
+                <li>Política de Privacidad</li>
+                <li>Licencia de Gobierno Abierto</li>
+            </ul>
+        </div>
+    </footer>
+</body>
+{% block extrajs %}
+{% endblock %}
+
+
+</html>

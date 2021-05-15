@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block menu %}
+<ul>
+    <li><a href="{% url 'supervisor' %}">Consultar adultos mayores</a></li>
+    <li><a href="{% url 'supervisor' %}">Solicitudes enviadas</a></li>
+    <li><a href="{% url 'logout' %}">Cerrar Sesión</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+<h1>Página de supervisor de módulo</h1>
+{% endblock %}
