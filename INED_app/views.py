@@ -24,30 +24,32 @@ class Administrador(ListView):
         field = request.GET.get('campo-busqueda')
         searchInput = request.GET.get('user-search')
         if searchInput != None:
-            if field == 'nombres':
+            search = True
+            if field == 'Nombre(s)':
                 users = Usuario.objects.filter(
                     Q(nombres__icontains = searchInput)
                 )
-            if field == 'apellido_paterno':
+            if field == 'Apellido Paterno':
                 users = Usuario.objects.filter(
                     Q(apellido_paterno__icontains = searchInput)
                 )
-            if field == 'apellido_materno':
+            if field == 'Apellido Materno':
                 users = Usuario.objects.filter(
                     Q(apellido_materno__icontains = searchInput)
                 )
-            if field == 'numero_empleado':
+            if field == 'No. Empleado':
                 users = Usuario.objects.filter(
                     Q(numero_empleado = searchInput)
                 )
-            if field == 'usuario':
+            if field == 'Usuario':
                 users = Usuario.objects.filter(
                     Q(username__icontains = searchInput)
                 )
         else:
+            search = False
             users = Usuario.objects.filter()
         
-        return render(request, 'administrador.html', {'users':users})
+        return render(request, 'administrador.html', {'users':users, 'search':search, 'searchInput':searchInput, 'field':field})
     
     def dispatch(self, request, *args, **kwargs):
         if prueba(request, 'Administrador'):

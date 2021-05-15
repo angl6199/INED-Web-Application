@@ -22,16 +22,25 @@
     <div>
         <label for="campo-busqueda">Buscar por:</label>
         <form class="search-cont" method="get">
+        {% if not search %}
         <select class="register-field select1" name="campo-busqueda" id="campo-busqueda">
-            <option value="nombres">Nombre(s)</option>
-            <option value="apellido_paterno">Apellido Paterno</option>
-            <option value="apellido_materno">Apellido Materno</option>
-            <option value="numero_empleado">No. Empleado</option>
-            <option value="username">Usuario</option>
+            <option value="Nombre(s)">Nombre(s)</option>
+            <option value="Apellido Paterno">Apellido Paterno</option>
+            <option value="Apellido Materno">Apellido Materno</option>
+            <option value="No. Empleado">No. Empleado</option>
+            <option value="Usuario">Usuario</option>
         </select>
         <label id="user-label2" for="user-search">Datos de búsqueda:</label>
         <input required id="user-search" name="user-search" class="register-field" type="search" placeholder="Ingresa los datos de búsqueda">
         <button class="btn-nuevo-usuario" type="submit">Realizar búsqueda</button>
+        {% elif search %}
+        <select readonly class="register-field select1" name="campo-busqueda" id="campo-busqueda">
+            <option>{{field}}</option>
+        </select>
+        <label id="user-label2" for="user-search">Datos de búsqueda:</label>
+        <input readonly id="user-search" name="user-search" class="register-field" type="search" placeholder="{{searchInput}}">
+        <a class="btn-nuevo-usuario" href="{% url 'administrador' %}">Borrar búsqueda </a>
+        {% endif %}
         </form>
         <a class="btn-nuevo-usuario" href="{% url 'registrar_usuario' %}">Crear Usuario <img class="btn-img" src="{% static 'images/plus1_icon.png' %}" alt=""></a>
     </div>
