@@ -39,6 +39,34 @@ class ControladorUsuario(BaseUserManager):
         usuario.save()
         return usuario
 
+class AdultoMayor(models.Model):
+    nombres = models.CharField(max_length=200)
+    apellido_paterno = models.CharField(max_length=200)
+    apellido_materno = models.CharField(max_length=200, blank=True, null=True)
+    check_fechanacimiento = models.BooleanField()
+    fechanacimiento = models.DateField(blank=True, null=True)
+    sexo = models.CharField(max_length=50)
+    edad = models.IntegerField(blank=True, null=True)
+    estado_civil = models.CharField(max_length=100)
+    ocupacion = models.CharField(max_length=100)
+    ocupacion_anterior = models.CharField(max_length=100)
+    seguridad_social = models.CharField(max_length=100)
+    utiliza_seguridad_social = models.BooleanField()
+    check_vive_solo = models.BooleanField()
+    acompanante = models.CharField(blank=True, null=True, max_length=100)
+    acompanante_sexo = models.CharField(blank=True, null=True, max_length=50)
+    check_acompanante_fechanacimiento = models.BooleanField(blank=True, null=True)
+    acompanante_fechanacimiento = models.DateField(blank=True, null=True)
+    check_cuidador = models.BooleanField()
+    cuidador = models.CharField(blank=True, null=True, max_length=100)
+    cuidador_sexo = models.CharField(blank=True, null=True, max_length=50)
+    check_cuidador_fechanacimiento = models.DateField(blank=True, null=True)
+    cuidador_fechanacimiento = models.DateField(blank=True, null=True)
+    nombres_profesional = models.CharField(max_length=200)
+    apellido_paterno_profesional = models.CharField(max_length=200)
+    apellido_materno_profesional = models.CharField(max_length=200)
+    fechaevaluacion = models.DateField()
+
 
 class Usuario(AbstractBaseUser):
     CATEGORIAS_USUARIOS = (

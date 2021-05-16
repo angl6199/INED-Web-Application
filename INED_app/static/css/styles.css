@@ -511,3 +511,21 @@ footer div ul{
     padding: 20px 0px;
     color: white;
 }
+
+/* Adult Form */
+.input-adult-1{
+    height: 23px;
+    border: 2px solid #cccccc;
+    color: #acacac;
+    border-top: none;
+    border-left: none;
+    padding-bottom: 1px;
+    border-right: none;
+    font-size: 15px;
+    text-indent: 2px;
+    outline: none;
+}
+
+.input-adult-1::placeholder {
+    color: #acacac; 
+}

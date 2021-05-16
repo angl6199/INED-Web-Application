@@ -178,3 +178,15 @@ class RegistrarUsuario(CreateView):
             return redirect('users-manager')
         return render(request, 'users/administrador/crear_usuario.html', {'form': form})
 
+class RegistrarAdulto(View):
+    def get(self, request, *args, **kwargs):
+        form = AdultoRegistro()
+        return render(request, 'formulario_adulto.html', {'form': form})
+
+    # def post(self, request, *args, **kwargs):
+    #     form = AdultoRegistro(request.POST, request.FILES)
+    #     if form.is_valid():
+    #         usuario = form.save()
+    #         return redirect('users-manager')
+    #     return render(request, 'users/administrador/crear_usuario.html', {'form': form})
+

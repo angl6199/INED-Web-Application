@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
-from .models import Usuario
+from .models import AdultoMayor, Usuario
 from django.forms import ModelForm
 from django.forms import widgets
 
@@ -44,6 +44,40 @@ class FormaVisualizar(forms.ModelForm):
                 attrs = {'readonly':'True','class':'register-field','autocomplete': 'off', 'placeholder':'Número Telefónico'}
             ),
         }
+
+class AdultoRegistro(forms.ModelForm):
+    nombres = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder':'Nombre(s)', 'class':'input-adult-1'}))
+    apellido_paterno = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder':'Apellido Paterno', 'class':'input-adult-1'}))
+    apellido_materno = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder':'Apellido Materno', 'class':'input-adult-1'}))
+    check_fechanacimiento = forms.BooleanField(label="¿Cuenta con fecha de nacimiento?")
+    fechanacimiento = forms.DateField(label="Fecha de nacimiento", widget=forms.DateInput(attrs={'type': 'date', 'class':'input-adult-1'}))
+    sexo = forms.ChoiceField(label="Sexo", widget=forms.Select(attrs={'class':'input-adult-1'}))
+    edad = forms.IntegerField(label="", widget=forms.NumberInput(attrs={'placeholder':'Edad', 'readonly':True, 'class':'input-adult-1'}))
+    estado_civil = forms.ChoiceField(label="Estado civil", widget=forms.Select(attrs={'class':'input-adult-1'}))
+    ocupacion = forms.ChoiceField(label="¿A qué se dedica actualmente?", widget=forms.Select(attrs={'class':'input-adult-1'}))
+    ocupacion_anterior = forms.ChoiceField(label="¿Y anteriormente?", widget=forms.Select(attrs={'class':'input-adult-1'}))
+    seguridad_social = forms.ChoiceField(label="Seguridad social", widget=forms.Select(attrs={'class':'input-adult-1'}))
+    utiliza_seguridad_social = forms.BooleanField(label="¿Los utiliza?")
+    check_vive_solo = forms.BooleanField(label="¿Vive solo?")
+    acompanante = forms.ChoiceField(label="¿Con quién vive?", widget=forms.Select(attrs={'class':'input-adult-1'}))
+    acompanante_sexo = forms.ChoiceField(label="Sexo de acompañante", widget=forms.Select(attrs={'class':'input-adult-1'}))
+    check_acompanante_fechanacimiento = forms.BooleanField(label="¿Esta persona cuénta con fecha de nacimiento?")
+    acompanante_fechanacimiento = forms.DateField(label="Fecha de nacimiento acompañante", widget=forms.TextInput(attrs={'type':'date', 'class':'input-adult-1'}))
+    check_cuidador = forms.BooleanField(label="¿Tiene cuidador?")
+    cuidador = forms.ChoiceField(label="¿Quién lo cuida?", widget=forms.Select(attrs={'class':'input-adult-1'}))
+    cuidador_sexo = forms.ChoiceField(label="Sexo del cuidador", widget=forms.Select(attrs={'class':'input-adult-1'}))
+    check_cuidador_fechanacimiento = forms.BooleanField(label="¿Esta persona cuénta con fecha de nacimiento?")
+    cuidador_fechanacimiento = forms.DateField(label="Fecha de nacimiento cuidador", widget=forms.TextInput(attrs={'type':'date', 'class':'input-adult-1'}))
+    nombres_profesional = forms.CharField(label="", widget=forms.TextInput(attrs={'placeholder':'Nombre(s) Profesional en servicios', 'class':'input-adult-1'}))
+    apellido_paterno_profesional = forms.CharField(label="", widget=forms.TextInput(attrs={'placeholder':'Apellido Paterno Profesional en servicios', 'class':'input-adult-1'}))
+    apellido_materno_profesional = forms.CharField(label="", widget=forms.TextInput(attrs={'placeholder':'Apellido Materno Profesional en servicios', 'class':'input-adult-1'}))
+    fechaevaluacion = forms.DateField(label="Fecha de la evaluación", widget=forms.TextInput(attrs={'type':'date', 'class':'input-adult-1'}))
+
+    class Meta:
+        model = AdultoMayor
+        fields = '__all__'
+        
+
 
 class FormaRegistro(forms.ModelForm):
     CATEGORIAS_USUARIOS = (

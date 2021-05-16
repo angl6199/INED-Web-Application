@@ -35,6 +35,7 @@ urlpatterns = [
     path('eliminar_usuario/<int:id>', login_required(INED_app.views.eliminarUsuario), name = 'eliminar_usuario'),
     path('reactivar_usuario/<int:id>', login_required(INED_app.views.reactivarUsuario), name = 'reactivar_usuario'),
     path('registrar_usuario/', login_required(INED_app.views.RegistrarUsuario.as_view()), name = 'registrar_usuario'),
+    path('registrar_adulto/', INED_app.views.RegistrarAdulto.as_view(), name = 'registro_adulto')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
