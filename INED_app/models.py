@@ -123,7 +123,7 @@ class AdultoMayor(models.Model):
     seguridad_social = models.CharField(max_length=100, choices=CATEGORIAS_SS)
     seguridad_social_otro = models.CharField(max_length=100, blank=True, null=True)
     utiliza_seguridad_social = models.BooleanField()
-    acompanante = models.CharField(choices=CATEGORIAS_ACOMPANANTE, blank=True, null=True, max_length=100)
+    acompanante = models.CharField(choices=CATEGORIAS_ACOMPANANTE, max_length=100)
     acompanante_otro = models.CharField(max_length=100, blank=True, null=True)
     acompanante_sexo = models.CharField(blank=True, null=True, max_length=50, choices=CATEGORIAS_SEXO)
     check_acompanante_edad = models.BooleanField(blank=True, null=True)

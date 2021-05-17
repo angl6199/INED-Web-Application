@@ -182,6 +182,13 @@ class RegistrarAdulto(View):
     def get(self, request, *args, **kwargs):
         form = AdultoRegistro()
         return render(request, 'formulario_adulto.html', {'form': form})
+    
+    def post(self, request, *args, **kwargs):
+        form =AdultoRegistro(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+        return render(request, 'formulario_adulto.html', {'form': form})
 
     # def post(self, request, *args, **kwargs):
     #     form = AdultoRegistro(request.POST, request.FILES)
