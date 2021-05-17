@@ -1,31 +1,158 @@
 {% extends 'users/administrador/administrador_layout.html' %}
 
 {% block content %}
-<form class='registerform' method = "POST" enctype = "multipart/form-data">
-    <h1>Regitstrar adulto nuevo</h1>
+<form class='registerform2' method = "POST" enctype = "multipart/form-data">
+    <h1>Registrar Adulto Mayor Nuevo</h1>
     {% csrf_token %}
-    {{form.as_p}}
-    {% comment %} {% if form.errors %}
-    <script>
-    let inputs = document.querySelectorAll('.register-field')
-        for (let index = 0; index < inputs.length; index++) {
-            if (index != 3){
-                inputs[index].value = '';
-            }}
-    </script>
-        {% for error in form.errors %}
-            {% ifequal error 'password2' %}
-                <h2 class="error">Las contraseñas no coinciden</h2>
-            {% endifequal %} 
-            {% ifequal error 'tipo_usuario' %}
-                <h2 class="error">Tipo de usuario inválido</h2>
-            {% endifequal %} 
-            {% ifequal error 'username' %}
-                <h2 class="error">Nombre de usuario ya ocupado</h2>
-            {% endifequal %} 
-        {% endfor %}
-    {% endif %} {% endcomment %}
+
+    <div class="container-adult-form" id="cont1">
+        <h3>INFORMACIÓN GENERAL</h3>
+        <div class="adult-form-multiple">
+            {{form.nombres.errors}}
+            {{form.nombres}}
+            {{form.apellido_paterno.errors}}
+            {{form.apellido_paterno}}
+            {{form.apellido_materno.errors}}
+            {{form.apellido_materno}}
+        </div>
+        <div class="adult-form-multiple">
+            <span>
+                {{form.check_fechanacimiento.errors}}
+                {{form.check_fechanacimiento.label_tag}}
+                {{form.check_fechanacimiento}}
+            </span>
+            <span>
+                {{form.fechanacimiento.errors}}
+                {{form.fechanacimiento.label_tag}}
+                {{form.fechanacimiento}}
+            </span>
+            {{form.lugarnacimiento.errors}}
+            {{form.lugarnacimiento}}
+        </div>
+        <div class="adult-form-multiple">
+            {{form.edad.errors}}
+            {{form.edad}}
+            <span>
+                {{form.sexo.errors}}
+                {{form.sexo.label_tag}}
+                {{form.sexo}}
+            </span>
+            {{form.curp.errors}}
+            {{form.curp}}
+            {{form.rfc.errors}}
+            {{form.rfc}}
+        </div>
+        <div class="adult-form-multiple">
+            {{form.telefono.errors}}
+            {{form.telefono}}
+        </div>
     
-    <button type = "submit" style="cursor:pointer" class = "btn btn-primary">REGISTRAR</button>
+    </div>
+
+    <div class="container-adult-form" id="cont3">
+        <h3>CÉDULA DE RIESGO</h3>
+        <div class="adult-form-multiple">
+            <span>
+                {{form.ocupacion.errors}}
+                {{form.ocupacion.label_tag}}
+                {{form.ocupacion}}
+            </span>
+            <span>
+                {{form.ocupacion_anterior.errors}}
+                {{form.ocupacion_anterior.label_tag}}
+                {{form.ocupacion_anterior}}
+            </span>
+        </div>
+        <div class="adult-form-multiple">
+            <span>
+                {{form.estado_civil.errors}}
+                {{form.estado_civil.label_tag}}
+                {{form.estado_civil}}
+            </span>
+            <span>
+                {{form.seguridad_social.errors}}
+                {{form.seguridad_social.label_tag}}
+                {{form.seguridad_social}}
+            </span>
+            {{form.seguridad_social_otro.errors}}
+            {{form.seguridad_social_otro}}
+            <span>
+                {{form.utiliza_seguridad_social.errors}}
+                {{form.utiliza_seguridad_social.label_tag}}
+                {{form.utiliza_seguridad_social}}
+            </span>
+        </div>
+        <h4>• Acompañante</h4>
+        <div class="adult-form-multiple adult-form-small">
+            <span>
+                {{form.acompanante.errors}}
+                {{form.acompanante.label_tag}}
+                {{form.acompanante}}
+            </span>
+            {{form.acompanante_otro.errors}}
+            {{form.acompanante_otro}}
+        </div>
+        <div class="adult-form-multiple">
+            <span>
+                {{form.acompanante_sexo.errors}}
+                {{form.acompanante_sexo.label_tag}}
+                {{form.acompanante_sexo}}
+            </span>
+            <span>
+                {{form.check_acompanante_edad.errors}}
+                {{form.check_acompanante_edad.label_tag}}
+                {{form.check_acompanante_edad}}
+            </span>
+            {{form.acompanante_edad.errors}}
+            {{form.acompanante_edad}}
+        </div>
+        <h4>• Cuidador</h4>
+        <div class="adult-form-multiple">
+            <span>
+                {{form.check_cuidador.errors}}
+                {{form.check_cuidador.label_tag}}
+                {{form.check_cuidador}}
+            </span>
+            <span>
+                {{form.cuidador.errors}}
+                {{form.cuidador.label_tag}}
+                {{form.cuidador}}
+            </span>
+            {{form.cuidador_otro.errors}}
+            {{form.cuidador_otro}}
+        </div>
+        <div class="adult-form-multiple">
+            <span>
+                {{form.cuidador_sexo.errors}}
+                {{form.cuidador_sexo.label_tag}}
+                {{form.cuidador_sexo}}
+            </span>
+            <span>
+                {{form.check_cuidador_edad.errors}}
+                {{form.check_cuidador_edad.label_tag}}
+                {{form.check_cuidador_edad}}
+            </span>
+            {{form.cuidador_edad.errors}}
+            {{form.cuidador_edad}}
+        </div>
+        <h4>• Profesional en servicios</h4>
+        <div class="adult-form-multiple">
+            {{form.nombres_profesional.errors}}
+            {{form.nombres_profesional}}
+            {{form.apellido_paterno_profesional.errors}}
+            {{form.apellido_paterno_profesional}}
+            {{form.apellido_materno_profesional.errors}}
+            {{form.apellido_materno_profesional}}
+        </div>
+        <div class="adult-form-multiple">
+            <span>
+                {{form.fechaevaluacion.errors}}
+                {{form.fechaevaluacion.label_tag}}
+                {{form.fechaevaluacion}}
+            </span>
+        </div>
+
+        <button type = "submit" style="cursor:pointer" class = "btn-generic btn-next-form-adult">REGISTRAR</button>
+    </div>
 </form>
 {% endblock %}

@@ -519,13 +519,73 @@ footer div ul{
     color: #acacac;
     border-top: none;
     border-left: none;
-    padding-bottom: 1px;
     border-right: none;
     font-size: 15px;
     text-indent: 2px;
     outline: none;
 }
-
 .input-adult-1::placeholder {
     color: #acacac; 
+}
+.large-input{
+    width: 250px;
+}
+.small-input{
+    width: 110px;
+}
+.registerform2{
+    background-color: white;
+    width: 90%;
+    border-radius: 7px;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+}
+.registerform2 h1{
+    padding-top: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+}
+.container-adult-form{
+    margin-left: 40px;
+    margin-right: 40px;
+}
+.container-adult-form h3{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.container-adult-form h4{
+    padding-top: 15px;
+}
+.container-adult-form label{
+    font-size: 15px;
+    color: #acacac;
+    padding-right: 6px;
+}
+.container-adult-form div{
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.adult-form-multiple{
+    display: flex;
+    justify-content: space-between;
+}
+.adult-form-small{
+    justify-content: space-around;
+}
+.btn-generic{
+    padding: 8px 9px;
+    line-height: initial;
+    font-size: 14px;
+    background-color: #1bb600af;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+    transition: background-color 300ms;
+    text-decoration: none;
+}
+.btn-next-form-adult{
+    margin-bottom: 20px;
+    margin-top: 15px;
 }

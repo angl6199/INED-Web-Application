@@ -40,28 +40,100 @@ class ControladorUsuario(BaseUserManager):
         return usuario
 
 class AdultoMayor(models.Model):
+    CATEGORIAS_SEXO = (
+        ('Hombre', 'Hombre'),
+        ('Mujer', 'Mujer'),
+    )
+    CATEGORIAS_ESTADO_CIVIL = (
+        ('-', '-'),
+        ('Soltero', 'Soltero'),
+        ('Casado', 'Casado'),
+        ('Viudo', 'Viudo'),
+        ('Separado', 'Separado'),
+        ('Divorciado', 'Divorciado'),
+        ('Unión Libre', 'Unión Libre'),
+        ('Ninguno', 'Ninguno'),
+        ('Se rehúsa', 'Se rehúsa'),
+    )
+    CATEGORIAS_OCUPACION = (
+        ('Inactivo(a)', 'Inactivo(a)'),
+        ('Jubilado(a) sin pensión', 'Jubilado(a) sin pensión'),
+        ('Jubilado(a) con pensión', 'Jubilado(a) con pensión'),
+        ('Comercio informal', 'Comercio informal'),
+        ('Jornalero/campesino', 'Jornalero/campesino'),
+        ('Obrero(a)', 'Obrero(a)'),
+        ('Empleado(a) de oficina', 'Empleado(a) de oficina'),
+        ('Profesionista independiente', 'Profesionista independiente'),
+        ('Patrón(a)/jefe/empresario(a)', 'Patrón(a)/jefe/empresario(a)'),
+        ('Ama de casa', 'Ama de casa'),
+        ('Desempleado(a)', 'Desempleado(a)'),
+        ('Ninguno', 'Ninguno'),
+        ('Se rehúsa', 'Se rehúsa'),
+    )
+    CATEGORIAS_SS = (
+        ('IMSS', 'IMSS'),
+        ('ISSSTE', 'ISSSTE'),
+        ('SEDENA', 'SEDENA'),
+        ('SEMAR', 'SEMAR'),
+        ('PEMEX', 'PEMEX'),
+        ('SSP-DF', 'SSP-DF'),
+        ('INSABI', 'INSABI'),
+        ('PRIVADO', 'PRIVADO'),
+        ('GASTOS MÉDICOS MAYORES', 'GASTOS MÉDICOS MAYORES'),
+        ('OTRO', 'OTRO'),
+    )
+    CATEGORIAS_ACOMPANANTE = (
+        ('Pareja', 'Pareja'),
+        ('Hijos', 'Hijos'),
+        ('Otro Familiar', 'Otro Familiar'),
+        ('No Familiar', 'No Familiar'),
+        ('Solo', 'Solo'),
+        ('No se puede documentar', 'No se puede documentar'),
+        ('Se rehúsa', 'Se rehúsa'),
+    )
+    CATEGORIAS_CUIDADOR = (
+        ('Pareja', 'Pareja'),
+        ('Hijos', 'Hijos'),
+        ('Otro Familiar', 'Otro Familiar'),
+        ('No Familiar', 'No Familiar'),
+        ('Formal(encargado del AM, Ej. Enfermera)', 'Formal(encargado del AM, Ej. Enfermera)'),
+        ('Ninguno', 'Ninguno'),
+        ('No sabe', 'No sabe'),
+        ('No contesta', 'No contesta'),
+    )
+
+    # Datos generales
     nombres = models.CharField(max_length=200)
     apellido_paterno = models.CharField(max_length=200)
     apellido_materno = models.CharField(max_length=200, blank=True, null=True)
     check_fechanacimiento = models.BooleanField()
     fechanacimiento = models.DateField(blank=True, null=True)
-    sexo = models.CharField(max_length=50)
+    lugarnacimiento = models.CharField(max_length=200, blank=True, null=True)
     edad = models.IntegerField(blank=True, null=True)
-    estado_civil = models.CharField(max_length=100)
-    ocupacion = models.CharField(max_length=100)
-    ocupacion_anterior = models.CharField(max_length=100)
-    seguridad_social = models.CharField(max_length=100)
+    sexo = models.CharField(max_length=50, choices=CATEGORIAS_SEXO)
+    rfc = models.CharField(max_length=13, blank=True, null=True)
+    curp = models.CharField(max_length=18, blank=True, null=True)
+    telefono = models.CharField(max_length=15, blank=True, null=True)
+
+
+    # Cedula evalucaion riesgo
+    estado_civil = models.CharField(max_length=100, choices=CATEGORIAS_ESTADO_CIVIL)
+    ocupacion = models.CharField(max_length=100, choices=CATEGORIAS_OCUPACION)
+    ocupacion_anterior = models.CharField(max_length=100, choices=CATEGORIAS_OCUPACION)
+    seguridad_social = models.CharField(max_length=100, choices=CATEGORIAS_SS)
+    seguridad_social_otro = models.CharField(max_length=100, blank=True, null=True)
     utiliza_seguridad_social = models.BooleanField()
-    check_vive_solo = models.BooleanField()
-    acompanante = models.CharField(blank=True, null=True, max_length=100)
-    acompanante_sexo = models.CharField(blank=True, null=True, max_length=50)
-    check_acompanante_fechanacimiento = models.BooleanField(blank=True, null=True)
-    acompanante_fechanacimiento = models.DateField(blank=True, null=True)
+    acompanante = models.CharField(choices=CATEGORIAS_ACOMPANANTE, blank=True, null=True, max_length=100)
+    acompanante_otro = models.CharField(max_length=100, blank=True, null=True)
+    acompanante_sexo = models.CharField(blank=True, null=True, max_length=50, choices=CATEGORIAS_SEXO)
+    check_acompanante_edad = models.BooleanField(blank=True, null=True)
+    acompanante_edad = models.IntegerField(blank=True, null=True)
     check_cuidador = models.BooleanField()
-    cuidador = models.CharField(blank=True, null=True, max_length=100)
-    cuidador_sexo = models.CharField(blank=True, null=True, max_length=50)
-    check_cuidador_fechanacimiento = models.DateField(blank=True, null=True)
-    cuidador_fechanacimiento = models.DateField(blank=True, null=True)
+    cuidador = models.CharField(choices=CATEGORIAS_CUIDADOR, blank=True, null=True, max_length=100)
+    cuidador_otro = models.CharField(max_length=100, blank=True, null=True)
+    cuidador_sexo = models.CharField(blank=True, null=True, max_length=50, choices=CATEGORIAS_SEXO)
+    check_cuidador_edad = models.BooleanField(blank=True, null=True)
+    cuidador_edad = models.IntegerField(blank=True, null=True)
     nombres_profesional = models.CharField(max_length=200)
     apellido_paterno_profesional = models.CharField(max_length=200)
     apellido_materno_profesional = models.CharField(max_length=200)
