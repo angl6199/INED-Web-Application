@@ -47,7 +47,7 @@ class FormaVisualizar(forms.ModelForm):
 
 class AdultoRegistro(forms.ModelForm):
     CATEGORIAS_SEXO = (
-        ('-', '-'),
+        ('', ''),
         ('Hombre', 'Hombre'),
         ('Mujer', 'Mujer'),
     )
@@ -102,7 +102,7 @@ class AdultoRegistro(forms.ModelForm):
         ('Se rehúsa', 'Se rehúsa'),
     )
     CATEGORIAS_CUIDADOR = (
-        ('-', '-'),
+        ('', ''),
         ('Pareja', 'Pareja'),
         ('Hijos', 'Hijos'),
         ('Otro Familiar', 'Otro Familiar'),
@@ -131,11 +131,13 @@ class AdultoRegistro(forms.ModelForm):
     seguridad_social = forms.ChoiceField(label="Seguridad social", choices=CATEGORIAS_SS, widget=forms.Select(attrs={'class':'input-adult-1 large-input'}))
     seguridad_social_otro = forms.CharField(label='', required=False, widget=forms.TextInput(attrs={'placeholder':'¿Cuál?', 'class':'input-adult-1'}))
     utiliza_seguridad_social = forms.BooleanField(label="¿Los utiliza?", required=False)
+    
     acompanante = forms.ChoiceField(label="¿Con quién vive?", choices=CATEGORIAS_ACOMPANANTE, widget=forms.Select(attrs={'class':'input-adult-1 large-input'}))
     acompanante_otro = forms.CharField(label='', required=False, widget=forms.TextInput(attrs={'placeholder':'¿Quién?', 'class':'input-adult-1 large-input'}))
     acompanante_sexo = forms.ChoiceField(label="Sexo de acompañante", required=False, choices=CATEGORIAS_SEXO, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
     check_acompanante_edad = forms.BooleanField(label="¿Se conoce la edad del acompañante?", required=False)
     acompanante_edad = forms.IntegerField(required=False, widget=forms.NumberInput(attrs={'class':'input-adult-1', 'placeholder':'Edad acompañante'}))
+    
     check_cuidador = forms.BooleanField(label="¿Tiene cuidador?", required=False)
     cuidador = forms.ChoiceField(label="Relación", required=False, choices=CATEGORIAS_CUIDADOR, widget=forms.Select(attrs={'class':'input-adult-1'}))
     cuidador_otro = forms.CharField(label='', required=False, widget=forms.TextInput(attrs={'placeholder':'¿Quién?', 'class':'input-adult-1 large-input'}))
