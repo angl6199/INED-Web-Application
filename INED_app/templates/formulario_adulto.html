@@ -1,8 +1,12 @@
 {% extends 'users/administrador/administrador_layout.html' %}
+{% load static %}
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'libraries\bootstrap-5.0.0-beta3-dist\css\bootstrap.min.css' %}">
+{% endblock %}
 
 {% block content %}
 <form class='registerform2' method = "POST" enctype = "multipart/form-data">
-    <h1>Registrar Adulto Mayor Nuevo</h1>
+    <h1>Registrar Adulto Mayor</h1>
     {% csrf_token %}
 
     <div class="container-adult-form" id="cont1">
@@ -82,7 +86,7 @@
                 {{form.utiliza_seguridad_social}}
             </span>
         </div>
-        <h4>• Acompañante</h4>
+        <h4>Acompañante</h4>
         <div class="adult-form-multiple adult-form-small">
             <span>
                 {{form.acompanante.errors}}
@@ -106,7 +110,7 @@
             {{form.acompanante_edad.errors}}
             {{form.acompanante_edad}}
         </div>
-        <h4>• Cuidador</h4>
+        <h4>Cuidador</h4>
         <div class="adult-form-multiple">
             <span>
                 {{form.check_cuidador.errors}}
@@ -135,7 +139,7 @@
             {{form.cuidador_edad.errors}}
             {{form.cuidador_edad}}
         </div>
-        <h4>• Profesional en servicios</h4>
+        <h4>Profesional en servicios</h4>
         <div class="adult-form-multiple">
             {{form.nombres_profesional.errors}}
             {{form.nombres_profesional}}
@@ -150,6 +154,539 @@
                 {{form.fechaevaluacion.label_tag}}
                 {{form.fechaevaluacion}}
             </span>
+        </div>
+        <h4>Actividades básicas de la vida diaria</h4>
+        <div>
+            <p style="color: #acacac;">Deberá preguntar si el adulto mayor tiene algún grado de dificultad para la realización de la actividad de la siguiente manera: ¿En este
+                momento, tiene usted alguna dificultad para (actividad)?</p>
+        </div>
+        <div>
+            <table class="table table-bordered table-actividades-b">
+                <thead>
+                  <tr>
+                    <th scope="col" rowspan="2">¿En este momento,<br>tiene usted dificultad<br>para...</th>
+                    <th scope="col" colspan="2">INDEPENDIENTE (1 punto)</th>
+                    <th scope="col" rowspan="2">DEPENDIENTE<br>(0 puntos)<br>(D)</th>
+                    <th scope="col" rowspan="2">RESPUESTA</th>
+                  </tr>
+                  <tr>
+                      <th>INDEPENDIENTE TOTAL<br>(I)</th>
+                      <th>INDEPENDIENTE CON AYUDA<br>(IA)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span style="font-weight: bolder;">Bañarse?</span> (baño de<br>
+                        esponja, en tina o<br>
+                        regadera)</th>
+                    <td>No recibe asistencia (entra y<br>
+                        sale de la tina por sí mismo(a) si<br>
+                        la bañera es el medio principal<br>
+                        de baño)</td>
+                    <td>Recibe asistencia con solamente<br> 
+                        una parte del cuerpo (como la<br>
+                        espalda o una pierna)</td>
+                    <td>Recibe asistencia con<br>
+                        más de una parte del<br>
+                        cuerpo (o no se baña)</td>
+                    <td class="table-adult-input">
+                        {{form.bañarse.errors}}
+                        {{form.bañarse}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                        <span style="font-weight: bolder;">Vestirse?</span> (saca la ropa<br>
+                        del armario y/o cajones,<br>
+                        incluye ropa interior,<br>
+                        exterior y elementos de<br>
+                        fijación como tirantes o<br>
+                        cinturón)
+                    </td>
+                    <td>
+                        Saca la ropa y se viste<br>
+                        completamente sin asistencia
+                    </td>
+                    <td>
+                        Saca la ropa y se viste sin<br>
+                        asistencia excepto para atar<br>
+                        los cordones de los zapatos
+                    </td>
+                    <td>
+                        Recibe asistencia para<br>
+                        sacar la ropa o para<br>
+                        vestirse, o permanece<br>
+                        parcial o<br>
+                        completamente sin<br>
+                        vestirse
+                    </td>
+                    <td class="table-adult-input">
+                        {{form.vestirse.errors}}
+                        {{form.vestirse}}
+                    </td>
+                  </tr>
+                  <tr>
+                      <td>
+                        <span style="font-weight: bolder;">Usar el sanitario?</span> (ir al <br>
+                        cuarto de baño para<br>
+                        eliminación urinaria o<br>
+                        intestinal, se asea solo(a)<br>
+                        y se arregla la ropa)
+                      </td>
+                      <td>
+                        Va al cuarto de baño, se asea y<br>
+                        arregla la ropa sin asistencia<br>
+                        (puede usar objetos de soporte<br>
+                        como bastón, caminadora o<br>
+                        silla de ruedas y puede manejar<br>
+                        un cómodo, urinal o baño<br>
+                        portátil por la noche y vaciarlo<br>
+                        por la mañana)
+                      </td>
+                      <td>
+                        Recibe asistencia para ir al<br>
+                        cuarto de baño, o para asearse,<br>
+                        o para arreglarse la ropa tras<br>
+                        la eliminación o en el uso de<br>
+                        un cómodo, urinal o baño<br>
+                        portátil
+                      </td>
+                      <td>
+                        No va al baño para el<br>
+                        proceso de eliminación<br>
+                      </td>
+                      <td class="table-adult-input">
+                        {{form.sanitario.errors}}
+                        {{form.sanitario}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                        <span style="font-weight: bolder;">Trasladarse<br>
+                        (desplazarse)?</span><br>
+                        (entrar/salir de la cama,<br>
+                        sentarse/levantarse de<br>
+                        una silla)
+                    </td>
+                    <td>
+                        Entra y sale de la cama y se<br>
+                        sienta y se levanta de una silla<br>
+                        sin asistencia (puede usar<br>
+                        objetos de soporte como un<br>
+                        bastón o caminadora)
+                    </td>
+                    <td>
+                        Entra o sale de la cama, se<br>
+                        sienta o se levanta de una<br>
+                        silla con asistencia
+                    </td>
+                    <td>
+                        No se levanta de la<br>
+                        cama
+                    </td>
+                    <td class="table-adult-input">
+                        {{form.trasladarse.errors}}
+                        {{form.trasladarse}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                        <span style="font-weight: bolder;">Mantener la continencia?</span><br>
+                        (controlar<br>
+                        la micción, defecación)
+                    </td>
+                    <td>
+                        Controla la micción y los<br>
+                        movimientos intestinales por sí<br>
+                        mismo(a)
+                    </td>
+                    <td>
+                        Tiene accidentes ocasionales
+                    </td>
+                    <td>
+                        Requiere<br>
+                        supervisión/ayuda<br>
+                        para mantener el<br>
+                        control de la orina o<br>
+                        del intestino; usa<br>
+                        catéter o es<br>
+                        incontinente
+                    </td>
+                    <td class="table-adult-input">
+                        {{form.continencia.errors}}
+                        {{form.continencia}}
+                    </td>
+                  </tr>
+                  <tr>
+                      <td>
+                        <span style="font-weight: bolder;">Alimentarse?</span>
+                      </td>
+                      <td>
+                        Come solo(a) sin asistencia
+                      </td>
+                      <td>
+                        Se alimenta solo(a) pero<br>
+                        requiere asistencia para<br>
+                        cortar la carne o untar la<br>
+                        mantequilla en el pan
+                      </td>
+                      <td>
+                        Recibe asistencia para<br>
+                        alimentarse o es<br>
+                        alimentado(a) parcial o<br>
+                        completamente<br>
+                        mediante sondas o<br>
+                        fluidos intravenosos
+                      </td>
+                      <td class="table-adult-input">
+                        {{form.alimentarse.errors}}
+                        {{form.alimentarse}}
+                    </td>
+                  </tr>
+                  <tr>
+                      <td>
+                          <span style="font-weight: bolder;">TOTAL</span>
+                      </td>
+                      <td colspan="4">
+
+                      </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+
+        <h4>Escala de actividades instrumentadas de la vida diaria (Lawton y Brody)</h4>
+        <div>
+            <p style="color: #acacac;">Calificar máximo un punto por pregunta.</p>
+        </div>
+        <div>
+            <table class="table table-bordered table-actividades-b">
+                <thead>
+                    <tr>
+                        <th scope="col">ACTIVIDADES INSTRUMENTADAS DE LA VIDA DIARIA (LAWTON)</th>
+                        <th scope="col">RESPUESTA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                           <span style="font-weight: bolder;">1) <span style="margin-left: 15px;">Capacidad para usar el teléfono</span></span><br>
+                            1: Lo opera por iniciativa propia, lo marca sin problema.<br>
+                            1: Marca sólo unos cuantos números bien conocidos.<br>
+                            1: Contesta el teléfono pero no llama.<br>
+                            0: No usa el teléfono.
+                        </td>
+                        <td class="table-adult-input">
+                            {{form.lawton_telefono.errors}}
+                            {{form.lawton_telefono}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="font-weight: bolder;">2) <span style="margin-left: 15px;"> Transporte</span></span> <br>
+                            1: Viaja de forma independiente en el transporte público o maneja su propio coche<br>
+                            1: Puede viajar solo en taxi, pero no lo hace en el transporte público<br>
+                            1: Viaja en el transporte público, solo cuando es asistido o acompañado de otro<br>
+                            0: Viaja limitado a taxi o automóvil con ayuda de otra persona<br>
+                            0: No puede viajar en absoluto<br>
+                        </td>
+                        <td class="table-adult-input">
+                            {{form.lawton_transporte.errors}}
+                            {{form.lawton_transporte}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="font-weight: bolder;">3) <span style="margin-left: 15px;"> Medicación </span></span> <br>
+                            1: Se encarga de tomar la medicación en la dosis correcta y a la hora correcta<br>
+                            0: Toma el medicamento si se prepara la medicación previamente en dosificaciones separadas<br>
+                            0: No es capaz de tomar sus medicamentos
+                        </td>
+                        <td class="table-adult-input">
+                            {{form.lawton_medicacion.errors}}
+                            {{form.lawton_medicacion}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="font-weight: bolder;">4) <span style="margin-left: 15px;"> Finanzas</span></span> <br>
+                            1: Gestiona los asuntos financieros de forma independiente (presupuestos, escribe cheques, paga el<br>
+                            alquiler y las facturas, va al banco); recopila y realiza un seguimiento de los ingresos<br>
+                            1: Gestiona las compras del día a día, pero necesita ayuda con la banca y compras mayores<br>
+                            0: Es incapaz de manejar dinero
+                        </td>
+                        <td class="table-adult-input">
+                            {{form.lawton_finanzas.errors}}
+                            {{form.lawton_finanzas}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="font-weight: bolder;">5) <span style="margin-left: 15px;"> Compras</span></span> <br>
+                            1: Se encarga de todas sus necesidades de compras de forma independiente<br>
+                            0: Hace de forma independiente pequeñas compras<br>
+                            0: Necesita ir acompañado para realizar cualquier compra<br>
+                            0: Es completamente incapaz de realizar compras
+                        </td>
+                        <td class="table-adult-input">
+                            {{form.lawton_compras.errors}}
+                            {{form.lawton_compras}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="font-weight: bolder;">6) <span style="margin-left: 15px;"> Cocina</span></span> <br>
+                            1: Planea, prepara y sirve los alimentos correctamente<br>
+                            0: Prepara los alimentos sólo si se le provee de lo necesario<br>
+                            0: Calienta, sirve y prepara pero no lleva una dieta adecuada<br>
+                            0: Necesita que le preparen los alimentos
+                        </td>
+                        <td class="table-adult-input">
+                            {{form.lawton_cocina.errors}}
+                            {{form.lawton_cocina}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="font-weight: bolder;">7) <span style="margin-left: 15px;"> Cuidado del Hogar</span></span><br>
+                            1: Mantiene la casa solo o con ayuda ocasional (trabajo pesado: jardinería, plomería)<br>
+                            1: Realiza las tareas diarias ligeras (lavar trastes, arreglar la cama)<br>
+                            1: Realiza las tareas diarias, pero no puede mantener un nivel aceptable de limpieza<br>
+                            1: Necesita ayuda en todas las tareas de mantenimiento del hogar<br>
+                            0: No participa en las tareas de mantenimiento del hogar
+                        </td>
+                        <td class="table-adult-input">
+                            {{form.lawton_hogar.errors}}
+                            {{form.lawton_hogar}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="font-weight: bolder;">8) <span style="margin-left: 15px"> Lavandería </span></span><br>
+                            1: Se ocupa del lavado de su ropa independientemente<br>
+                            1: Lava sólo pequeñas cosas (calcetines, medias, etc.)<br>
+                            0: Toda su ropa tiene que ser lavada por otras personas
+                        </td>
+                        <td class="table-adult-input">
+                            {{form.lawton_lavanderia.errors}}
+                            {{form.lawton_lavanderia}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span style="font-weight: bolder;"> 
+                                TOTAL
+                            </span>
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4>Cognición</h4>
+        <div>
+            <table class="table table-bordered table-actividades-b">
+                <thead>
+                    <tr>
+                        <th scope="col">PREGUNTA</th>
+                        <th scope="col">RESPUESTA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            ¿Tiene problemas de memoria?
+                        </td>
+                        <td class="table-adult-input">
+                            {{form.cognicion_memoria.errors}}
+                            {{form.cognicion_memoria}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            ¿Estos problemas de memoria le impiden realizar sus actividades de la vida diaria?
+                        </td>
+                        <td class="table-adult-input">
+                            {{form.cognicion_actividades.errors}}
+                            {{form.cognicion_actividades}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            ¿Los problemas de memoria son desde hace un año o más?
+                        </td>
+                        <td class="table-adult-input">
+                            {{form.cognicion_tiempo.errors}}
+                            {{form.cognicion_tiempo}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4>Estado de ánimo</h4>
+        <div>
+            <p style="color: #acacac;">Si total es 4 o más = Activo.</p>
+        </div>
+        <div>
+            <table class="table table-bordered table-actividades-b">
+                <thead>
+                    <tr>
+                        <th>
+                            DEPRESIÓN
+                        </th>
+                        <th>
+                            RESPUESTA
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            ¿Siente que su vida está vacía?
+                        </td>
+                        <td class="table-adult-input">
+                            {{form.depresion_vacio.errors}}
+                            {{form.depresion_vacio}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            ¿Se siente con frecuencia aburrido/a?
+                        </td>
+                        <td class="table-adult-input">
+                            {{form.depresion_aburrido.errors}}
+                            {{form.depresion_aburrido}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            ¿Se encuentra de buen humor la mayor parte del tiempo?
+                        </td>
+                        <td class="table-adult-input"> 
+                            {{form.depresion_tiempo.errors}}
+                            {{form.depresion_tiempo}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            ¿Con frecuencia se siente desamparado o desprotegido?
+                        </td>
+                        <td class="table-adult-input">
+                            {{form.depresion_protegido.errors}}
+                            {{form.depresion_protegido}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            ¿Se siente lleno/a de energía?
+                        </td>
+                        <td class="table-adult-input">
+                            {{form.depresion_energia.errors}}
+                            {{form.depresion_energia}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            TOTAL
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h4>Escala de fragilidad</h4>
+        <div>
+            <p style="color: #acacac;">Si total es 3 o más = Fragilidad.</p>
+        </div>
+        <div>
+            <table class="table table-bordered table-actividades-b">
+                <thead>
+                    <tr>
+                        <th>
+                            PREGUNTA
+                        </th>
+                        <th>
+                            RESPUESTA
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            1. ¿Se siente cansado todo el tiempo? (o la mayor parte del tiempo)
+                        </td>
+                        <td class="table-adult-input">
+                            {{form.fragilidad_cansado.errors}}
+                            {{form.fragilidad_cansado}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            2. ¿Puede subir escaleras sin ayuda? (Un piso, sin bastón o andadera)
+                        </td>
+                        <td class="table-adult-input">
+                            {{form.fragilidad_escaleras.errors}}
+                            {{form.fragilidad_escaleras}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            3. ¿Puede caminar 5 cuadras sin ayuda? (incluyendo bastón, andadera)
+                        </td>
+                        <td class="table-adult-input"> 
+                            {{form.fragilidad_cuadras.errors}}
+                            {{form.fragilidad_cuadras}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            4. ¿Ha perdido peso, 5 o más Kg, en los últimos 6 meses, sin proponerselo?
+                        </td>
+                        <td class="table-adult-input">
+                            {{form.fragilidad_peso.errors}}
+                            {{form.fragilidad_peso}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            5. ¿Puede cargar peso, 5 Kg o más?
+                        </td>
+                        <td class="table-adult-input">
+                            {{form.fragilidad_cargar.errors}}
+                            {{form.fragilidad_cargar}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            TOTAL
+                        </td>
+                        <td>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4>Autopercepción de la salud</h4>
+        <div>
+            <p style="color: #acacac;">Realice las siguientes preguntas y registre la respuesta de la persona mayor.</p>
+        </div>
+        <div>
+            {{form.autopercepcion_salud.errors}}
+            {{form.autopercepcion_salud.label_tag}}
+            {{form.autopercepcion_salud}}
+        </div>
+        <div>
+            {{form.autopercepcion_actividades.errors}}
+            {{form.autopercepcion_actividades.label_tag}}
+            {{form.autopercepcion_actividades}}
         </div>
 
         <button type = "submit" style="cursor:pointer" class = "btn-generic btn-next-form-adult">REGISTRAR</button>

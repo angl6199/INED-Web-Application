@@ -545,6 +545,7 @@ footer div ul{
     text-align: center;
     text-transform: uppercase;
     padding-bottom: 20px;
+    font-size: 25px;
 }
 .container-adult-form{
     margin-left: 40px;
@@ -553,9 +554,12 @@ footer div ul{
 .container-adult-form h3{
     padding-top: 20px;
     padding-bottom: 20px;
+    font-size: 18px;
+    font-weight: bolder;
 }
 .container-adult-form h4{
     padding-top: 15px;
+    font-size: 17px;
 }
 .container-adult-form label{
     font-size: 15px;
@@ -588,4 +592,28 @@ footer div ul{
 .btn-next-form-adult{
     margin-bottom: 20px;
     margin-top: 15px;
+}
+.table-actividades-b th{
+    text-align: center;
+    font-size: 15px;
+    color: #acacac;
+    
+}
+.table-actividades-b td{
+    text-align: left;
+    font-size: 15px;
+    color: #acacac;
+}
+.table>thead{
+    vertical-align: middle !important;
+}
+.table>tbody{
+    vertical-align: middle !important;
+}
+
+.table-bordered>:not(caption)>*>* {
+    border-width: 0 2px !important;
+}
+.table-adult-input{
+    text-align: center !important;
 }

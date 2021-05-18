@@ -112,6 +112,47 @@ class AdultoRegistro(forms.ModelForm):
         ('No sabe', 'No sabe'),
         ('No contesta', 'No contesta'),
     )
+    CATEGORIAS_ACTIVIDADES_DIARIAS = (
+        ('-', '-'),
+        ('I', 'I'),
+        ('IA', 'IA'),
+        ('D', 'D'),
+        ('Ninguna', 'Ninguna'),
+        ('Se rehúsa', 'Se rehúsa'),
+    )
+    CATEGORIAS_LAWTON = (
+        ('-', '-'),
+        ('1', '1'),
+        ('0', '0'),
+        ('Ninguna', 'Ninguna'),
+        ('Se rehúsa', 'Se rehúsa'),
+    )
+    CATEGORIAS_COGNICION = (
+        ('-', '-'),
+        ('Sí', 'Sí'),
+        ('No', 'No'),
+        ('Ninguna', 'Ninguna'),
+        ('Se rehúsa', 'Se rehúsa'),
+    )
+    CATEGORIAS_AUTOPERCEPCION_SALUD = (
+        ('-', '-'),
+        ('Excelente', 'Excelente'),
+        ('Muy buena', 'Muy buena'),
+        ('Buena', 'Buena'),
+        ('Mala', 'Mala'),
+        ('Muy mala', 'Muy mala'),
+        ('Ninguna', 'Ninguna'),
+        ('Se rehúsa', 'Se rehúsa'),
+    )
+    CATEGORIAS_AUTOPERCEPCION_ACTIVIDADES = (
+        ('-', '-'),
+        ('Nada', 'Nada'),
+        ('Poco', 'Poco'),
+        ('Mucho', 'Mucho'),
+        ('Mala', 'Mala'),
+        ('Ninguna', 'Ninguna'),
+        ('Se rehúsa', 'Se rehúsa'),
+    )
 
     nombres = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder':'Nombre(s)', 'class':'input-adult-1 large-input'}))
     apellido_paterno = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder':'Apellido Paterno', 'class':'input-adult-1 large-input'}))
@@ -144,10 +185,46 @@ class AdultoRegistro(forms.ModelForm):
     cuidador_sexo = forms.ChoiceField(label="Sexo del cuidador", required=False, choices=CATEGORIAS_SEXO, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
     check_cuidador_edad = forms.BooleanField(label="¿Se conoce la edad del cuidador?", required=False)
     cuidador_edad = forms.IntegerField(required=False, widget=forms.NumberInput(attrs={'placeholder':'Edad cuidador', 'class':'input-adult-1'}))
+    
     nombres_profesional = forms.CharField(label="", widget=forms.TextInput(attrs={'placeholder':'Nombre(s) Profesional en servicios', 'class':'input-adult-1 large-input'}))
     apellido_paterno_profesional = forms.CharField(label="", widget=forms.TextInput(attrs={'placeholder':'Ap. Paterno Profesional en servicios', 'class':'input-adult-1 large-input'}))
     apellido_materno_profesional = forms.CharField(label="", widget=forms.TextInput(attrs={'placeholder':'Ap. Materno Profesional en servicios', 'class':'input-adult-1 large-input'}))
     fechaevaluacion = forms.DateField(label="Fecha de la evaluación", widget=forms.TextInput(attrs={'type':'date', 'class':'input-adult-1'}))
+
+    bañarse = forms.ChoiceField(choices=CATEGORIAS_ACTIVIDADES_DIARIAS, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    vestirse = forms.ChoiceField(choices=CATEGORIAS_ACTIVIDADES_DIARIAS, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    sanitario = forms.ChoiceField(choices=CATEGORIAS_ACTIVIDADES_DIARIAS, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    trasladarse = forms.ChoiceField(choices=CATEGORIAS_ACTIVIDADES_DIARIAS, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    continencia = forms.ChoiceField(choices=CATEGORIAS_ACTIVIDADES_DIARIAS, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    alimentarse = forms.ChoiceField(choices=CATEGORIAS_ACTIVIDADES_DIARIAS, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+
+    lawton_telefono = forms.ChoiceField(choices=CATEGORIAS_LAWTON, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    lawton_transporte = forms.ChoiceField(choices=CATEGORIAS_LAWTON, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    lawton_medicacion = forms.ChoiceField(choices=CATEGORIAS_LAWTON, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    lawton_finanzas = forms.ChoiceField(choices=CATEGORIAS_LAWTON, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    lawton_compras = forms.ChoiceField(choices=CATEGORIAS_LAWTON, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    lawton_cocina = forms.ChoiceField(choices=CATEGORIAS_LAWTON, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    lawton_hogar = forms.ChoiceField(choices=CATEGORIAS_LAWTON, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    lawton_lavanderia = forms.ChoiceField(choices=CATEGORIAS_LAWTON, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+
+    cognicion_memoria = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    cognicion_actividades = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    cognicion_tiempo = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+
+    depresion_vacio = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    depresion_aburrido = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    depresion_tiempo = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    depresion_protegido = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    depresion_energia = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+
+    fragilidad_cansado = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    fragilidad_escaleras = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    fragilidad_cuadras = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    fragilidad_peso = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    fragilidad_cargar = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+
+    autopercepcion_salud = forms.ChoiceField(label="1. ¿En relación a otras personas de su edad como diría que se encuentra su salud?", choices=CATEGORIAS_AUTOPERCEPCION_SALUD, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    autopercepcion_actividades = forms.ChoiceField(label="2. ¿Hasta qué punto sus problemas de salud le impiden desempeñar sus actividades habituales?",choices=CATEGORIAS_AUTOPERCEPCION_ACTIVIDADES, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
 
     class Meta:
         model = AdultoMayor

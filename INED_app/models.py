@@ -101,6 +101,42 @@ class AdultoMayor(models.Model):
         ('No sabe', 'No sabe'),
         ('No contesta', 'No contesta'),
     )
+    CATEGORIAS_ACTIVIDADES_DIARIAS = (
+        ('I', 'I'),
+        ('IA', 'IA'),
+        ('D', 'D'),
+        ('Ninguna', 'Ninguna'),
+        ('Se rehúsa', 'Se rehúsa'),
+    )
+    CATEGORIAS_LAWTON = (
+        ('1', '1'),
+        ('0', '0'),
+        ('Ninguna', 'Ninguna'),
+        ('Se rehúsa', 'Se rehúsa'),
+    )
+    CATEGORIAS_COGNICION = (
+        ('Sí', 'Sí'),
+        ('No', 'No'),
+        ('Ninguna', 'Ninguna'),
+        ('Se rehúsa', 'Se rehúsa'),
+    )
+    CATEGORIAS_AUTOPERCEPCION_SALUD = (
+        ('Excelente', 'Excelente'),
+        ('Muy buena', 'Muy buena'),
+        ('Buena', 'Buena'),
+        ('Mala', 'Mala'),
+        ('Muy mala', 'Muy mala'),
+        ('Ninguna', 'Ninguna'),
+        ('Se rehúsa', 'Se rehúsa'),
+    )
+    CATEGORIAS_AUTOPERCEPCION_ACTIVIDADES = (
+        ('Nada', 'Nada'),
+        ('Poco', 'Poco'),
+        ('Mucho', 'Mucho'),
+        ('Mala', 'Mala'),
+        ('Ninguna', 'Ninguna'),
+        ('Se rehúsa', 'Se rehúsa'),
+    )
 
     # Datos generales
     nombres = models.CharField(max_length=200)
@@ -123,21 +159,60 @@ class AdultoMayor(models.Model):
     seguridad_social = models.CharField(max_length=100, choices=CATEGORIAS_SS)
     seguridad_social_otro = models.CharField(max_length=100, blank=True, null=True)
     utiliza_seguridad_social = models.BooleanField()
+
     acompanante = models.CharField(choices=CATEGORIAS_ACOMPANANTE, max_length=100)
     acompanante_otro = models.CharField(max_length=100, blank=True, null=True)
     acompanante_sexo = models.CharField(blank=True, null=True, max_length=50, choices=CATEGORIAS_SEXO)
     check_acompanante_edad = models.BooleanField(blank=True, null=True)
     acompanante_edad = models.IntegerField(blank=True, null=True)
+
     check_cuidador = models.BooleanField()
     cuidador = models.CharField(choices=CATEGORIAS_CUIDADOR, blank=True, null=True, max_length=100)
     cuidador_otro = models.CharField(max_length=100, blank=True, null=True)
     cuidador_sexo = models.CharField(blank=True, null=True, max_length=50, choices=CATEGORIAS_SEXO)
     check_cuidador_edad = models.BooleanField(blank=True, null=True)
     cuidador_edad = models.IntegerField(blank=True, null=True)
+
     nombres_profesional = models.CharField(max_length=200)
     apellido_paterno_profesional = models.CharField(max_length=200)
     apellido_materno_profesional = models.CharField(max_length=200)
     fechaevaluacion = models.DateField()
+
+    bañarse = models.CharField(choices=CATEGORIAS_ACTIVIDADES_DIARIAS, max_length=20)
+    vestirse = models.CharField(choices=CATEGORIAS_ACTIVIDADES_DIARIAS, max_length=20)
+    sanitario = models.CharField(choices=CATEGORIAS_ACTIVIDADES_DIARIAS, max_length=20)
+    trasladarse = models.CharField(choices=CATEGORIAS_ACTIVIDADES_DIARIAS, max_length=20)
+    continencia = models.CharField(choices=CATEGORIAS_ACTIVIDADES_DIARIAS, max_length=20)
+    alimentarse = models.CharField(choices=CATEGORIAS_ACTIVIDADES_DIARIAS, max_length=20)
+
+    lawton_telefono = models.CharField(choices=CATEGORIAS_LAWTON, max_length=20)
+    lawton_transporte = models.CharField(choices=CATEGORIAS_LAWTON, max_length=20)
+    lawton_medicacion = models.CharField(choices=CATEGORIAS_LAWTON, max_length=20)
+    lawton_finanzas = models.CharField(choices=CATEGORIAS_LAWTON, max_length=20)
+    lawton_compras = models.CharField(choices=CATEGORIAS_LAWTON, max_length=20)
+    lawton_cocina = models.CharField(choices=CATEGORIAS_LAWTON, max_length=20)
+    lawton_hogar = models.CharField(choices=CATEGORIAS_LAWTON, max_length=20)
+    lawton_lavanderia = models.CharField(choices=CATEGORIAS_LAWTON, max_length=20)
+
+    cognicion_memoria = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    cognicion_actividades = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    cognicion_tiempo = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+
+    depresion_vacio = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    depresion_aburrido = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    depresion_tiempo = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    depresion_protegido = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    depresion_energia = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+
+    fragilidad_cansado = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    fragilidad_escaleras = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    fragilidad_cuadras = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    fragilidad_peso = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    fragilidad_cargar = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+
+    autopercepcion_salud = models.CharField(choices=CATEGORIAS_AUTOPERCEPCION_SALUD, max_length=50)
+    autopercepcion_actividades = models.CharField(choices=CATEGORIAS_AUTOPERCEPCION_ACTIVIDADES, max_length=50)
+
 
 
 class Usuario(AbstractBaseUser):
