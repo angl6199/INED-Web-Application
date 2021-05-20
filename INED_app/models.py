@@ -133,9 +133,12 @@ class AdultoMayor(models.Model):
         ('Nada', 'Nada'),
         ('Poco', 'Poco'),
         ('Mucho', 'Mucho'),
-        ('Mala', 'Mala'),
         ('Ninguna', 'Ninguna'),
         ('Se rehúsa', 'Se rehúsa'),
+    )
+    CATEGORIAS_DINAMICA_SOCIAL = (
+        ('Sí', 'Sí'),
+        ('No', 'No'),
     )
 
     # Datos generales
@@ -213,6 +216,63 @@ class AdultoMayor(models.Model):
     autopercepcion_salud = models.CharField(choices=CATEGORIAS_AUTOPERCEPCION_SALUD, max_length=50)
     autopercepcion_actividades = models.CharField(choices=CATEGORIAS_AUTOPERCEPCION_ACTIVIDADES, max_length=50)
 
+    riesgo_1 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    riesgo_2 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    riesgo_3 = models.IntegerField()
+    riesgo_4 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    riesgo_5 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    riesgo_6 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    riesgo_7 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    riesgo_8 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    riesgo_9 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    riesgo_10 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    riesgo_11 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    riesgo_12 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    riesgo_13 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    riesgo_14 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    riesgo_15 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    riesgo_16 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    riesgo_17 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    riesgo_18 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    riesgo_19 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    riesgo_20 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    riesgo_21 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    riesgo_22 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    riesgo_23 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+
+    multimorbilidad_1 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    multimorbilidad_2 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    multimorbilidad_3 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    multimorbilidad_4 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    multimorbilidad_5 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    multimorbilidad_6 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    multimorbilidad_7 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    multimorbilidad_8 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    multimorbilidad_9 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    multimorbilidad_10 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    multimorbilidad_11 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    multimorbilidad_12 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    multimorbilidad_13 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    multimorbilidad_14 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    multimorbilidad_15 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    multimorbilidad_16 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    multimorbilidad_17 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    multimorbilidad_18 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    multimorbilidad_19 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    multimorbilidad_20 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=50, blank=True, null=True)
+
+    dinamica_social_1 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    dinamica_social_2 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    dinamica_social_3 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    dinamica_social_4 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    dinamica_social_5 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    dinamica_social_6 = models.CharField(choices=CATEGORIAS_COGNICION, max_length=20)
+    dinamica_social_7 = models.CharField(choices=CATEGORIAS_DINAMICA_SOCIAL, max_length=20)
+
+    derivacion_1 = models.CharField(choices=CATEGORIAS_DINAMICA_SOCIAL, max_length=20)
+    derivacion_2 = models.CharField(choices=CATEGORIAS_DINAMICA_SOCIAL, max_length=20)
+    derivacion_3 = models.CharField(choices=CATEGORIAS_DINAMICA_SOCIAL, max_length=20)
+    derivacion_4 = models.CharField(choices=CATEGORIAS_DINAMICA_SOCIAL, max_length=20)
 
 
 class Usuario(AbstractBaseUser):

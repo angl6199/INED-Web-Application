@@ -149,9 +149,13 @@ class AdultoRegistro(forms.ModelForm):
         ('Nada', 'Nada'),
         ('Poco', 'Poco'),
         ('Mucho', 'Mucho'),
-        ('Mala', 'Mala'),
         ('Ninguna', 'Ninguna'),
         ('Se rehúsa', 'Se rehúsa'),
+    )
+    CATEGORIAS_DINAMICA_SOCIAL = (
+        ('-', '-'),
+        ('Sí', 'Sí'),
+        ('No', 'No'),
     )
 
     nombres = forms.CharField(label='', widget=forms.TextInput(attrs={'placeholder':'Nombre(s)', 'class':'input-adult-1 large-input'}))
@@ -225,6 +229,65 @@ class AdultoRegistro(forms.ModelForm):
 
     autopercepcion_salud = forms.ChoiceField(label="1. ¿En relación a otras personas de su edad como diría que se encuentra su salud?", choices=CATEGORIAS_AUTOPERCEPCION_SALUD, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
     autopercepcion_actividades = forms.ChoiceField(label="2. ¿Hasta qué punto sus problemas de salud le impiden desempeñar sus actividades habituales?",choices=CATEGORIAS_AUTOPERCEPCION_ACTIVIDADES, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+
+    riesgo_1 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    riesgo_2 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    riesgo_3 = forms.IntegerField(widget=forms.NumberInput(attrs={'class':'input-adult-1 small-input', 'placeholder':'-'}))
+    riesgo_4 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    riesgo_5 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    riesgo_6 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    riesgo_7 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    riesgo_8 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    riesgo_9 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    riesgo_10 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    riesgo_11 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    riesgo_12 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    riesgo_13 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    riesgo_14 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    riesgo_15 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    riesgo_16 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    riesgo_17 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    riesgo_18 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    riesgo_19 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    riesgo_20 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    riesgo_21 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    riesgo_22 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    riesgo_23 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+
+    multimorbilidad_1 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    multimorbilidad_2 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    multimorbilidad_3 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    multimorbilidad_4 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    multimorbilidad_5 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    multimorbilidad_6 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    multimorbilidad_7 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    multimorbilidad_8 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    multimorbilidad_9 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    multimorbilidad_10 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    multimorbilidad_11 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    multimorbilidad_12 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    multimorbilidad_13 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    multimorbilidad_14 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    multimorbilidad_15 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    multimorbilidad_16 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    multimorbilidad_17 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    multimorbilidad_18 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    multimorbilidad_19 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    multimorbilidad_20 = forms.CharField(label="", required=False, widget=forms.TextInput(attrs={'placeholder':'¿Cual?', 'class':'input-adult-1 small-input'}))
+
+    dinamica_social_1 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    dinamica_social_2 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    dinamica_social_3 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    dinamica_social_4 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    dinamica_social_5 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    dinamica_social_6 = forms.ChoiceField(choices=CATEGORIAS_COGNICION, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    dinamica_social_7 = forms.ChoiceField(choices=CATEGORIAS_DINAMICA_SOCIAL, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+
+    derivacion_1 = forms.ChoiceField(choices=CATEGORIAS_DINAMICA_SOCIAL, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    derivacion_2 = forms.ChoiceField(choices=CATEGORIAS_DINAMICA_SOCIAL, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    derivacion_3 = forms.ChoiceField(choices=CATEGORIAS_DINAMICA_SOCIAL, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+    derivacion_4 = forms.ChoiceField(choices=CATEGORIAS_DINAMICA_SOCIAL, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
+
 
     class Meta:
         model = AdultoMayor
