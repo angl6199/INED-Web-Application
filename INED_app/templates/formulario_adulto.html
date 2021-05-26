@@ -25,7 +25,7 @@
                 {{form.check_fechanacimiento.label_tag}}
                 {{form.check_fechanacimiento}}
             </span>
-            <span>
+            <span class="hide">
                 {{form.fechanacimiento.errors}}
                 {{form.fechanacimiento.label_tag}}
                 {{form.fechanacimiento}}
@@ -49,6 +49,16 @@
         <div class="adult-form-multiple">
             {{form.telefono.errors}}
             {{form.telefono}}
+            <span>
+                {{form.latitud.errors}}
+                {{form.latitud.label_tag}}
+                {{form.latitud}}
+            </span>
+            <span>
+                {{form.longitud.errors}}
+                {{form.longitud.label_tag}}
+                {{form.longitud}}
+            </span>
         </div>
     
     </div>
@@ -97,12 +107,12 @@
             {{form.acompanante_otro}}
         </div>
         <div class="adult-form-multiple">
-            <span>
+            <span class="hide">
                 {{form.acompanante_sexo.errors}}
                 {{form.acompanante_sexo.label_tag}}
                 {{form.acompanante_sexo}}
             </span>
-            <span>
+            <span class="hide">
                 {{form.check_acompanante_edad.errors}}
                 {{form.check_acompanante_edad.label_tag}}
                 {{form.check_acompanante_edad}}
@@ -117,7 +127,7 @@
                 {{form.check_cuidador.label_tag}}
                 {{form.check_cuidador}}
             </span>
-            <span>
+            <span class="hide">
                 {{form.cuidador.errors}}
                 {{form.cuidador.label_tag}}
                 {{form.cuidador}}
@@ -126,12 +136,12 @@
             {{form.cuidador_otro}}
         </div>
         <div class="adult-form-multiple">
-            <span>
+            <span class="hide">
                 {{form.cuidador_sexo.errors}}
                 {{form.cuidador_sexo.label_tag}}
                 {{form.cuidador_sexo}}
             </span>
-            <span>
+            <span class="hide">
                 {{form.check_cuidador_edad.errors}}
                 {{form.check_cuidador_edad.label_tag}}
                 {{form.check_cuidador_edad}}
@@ -1251,4 +1261,8 @@
         <button type = "submit" style="cursor:pointer" class = "btn-generic btn-next-form-adult">REGISTRAR</button>
     </div>
 </form>
+{% endblock %}
+
+{% block extrajs %}
+<script src="{% static 'js\mainscript.js' %}"></script>
 {% endblock %}

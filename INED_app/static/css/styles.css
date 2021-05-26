@@ -546,6 +546,7 @@ footer div ul{
     text-transform: uppercase;
     padding-bottom: 20px;
     font-size: 25px;
+    font-weight: bolder;
 }
 .container-adult-form{
     margin-left: 40px;
@@ -616,4 +617,7 @@ footer div ul{
 }
 .table-adult-input{
     text-align: center !important;
+}
+.hide{
+    display: none;
 }

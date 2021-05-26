@@ -96,7 +96,7 @@ class AdultoMayor(models.Model):
         ('Hijos', 'Hijos'),
         ('Otro Familiar', 'Otro Familiar'),
         ('No Familiar', 'No Familiar'),
-        ('Formal(encargado del AM, Ej. Enfermera)', 'Formal(encargado del AM, Ej. Enfermera)'),
+        ('Formal (encargado del AM, Ej. Enfermera)', 'Formal (encargado del AM, Ej. Enfermera)'),
         ('Ninguno', 'Ninguno'),
         ('No sabe', 'No sabe'),
         ('No contesta', 'No contesta'),
@@ -153,7 +153,8 @@ class AdultoMayor(models.Model):
     rfc = models.CharField(max_length=13, blank=True, null=True)
     curp = models.CharField(max_length=18, blank=True, null=True)
     telefono = models.CharField(max_length=15, blank=True, null=True)
-
+    latitud = models.DecimalField(decimal_places=7, max_digits=12)
+    longitud = models.DecimalField(decimal_places=7, max_digits=12)
 
     # Cedula evalucaion riesgo
     estado_civil = models.CharField(max_length=100, choices=CATEGORIAS_ESTADO_CIVIL)

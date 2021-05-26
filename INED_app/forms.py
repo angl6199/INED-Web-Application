@@ -107,7 +107,7 @@ class AdultoRegistro(forms.ModelForm):
         ('Hijos', 'Hijos'),
         ('Otro Familiar', 'Otro Familiar'),
         ('No Familiar', 'No Familiar'),
-        ('Formal(encargado del AM, Ej. Enfermera)', 'Formal(encargado del AM, Ej. Enfermera)'),
+        ('Formal (encargado del AM, Ej. Enfermera)', 'Formal (encargado del AM, Ej. Enfermera)'),
         ('Ninguno', 'Ninguno'),
         ('No sabe', 'No sabe'),
         ('No contesta', 'No contesta'),
@@ -169,26 +169,28 @@ class AdultoRegistro(forms.ModelForm):
     rfc = forms.CharField(label='', required=False, widget=forms.TextInput(attrs={'placeholder':'RFC', 'class':'input-adult-1 large-input'}))
     curp = forms.CharField(label='', required=False, widget=forms.TextInput(attrs={'placeholder':'CURP', 'class':'input-adult-1 large-input'}))
     telefono = forms.CharField(label='', required=False, widget=forms.TextInput(attrs={'placeholder':'Teléfono', 'class':'input-adult-1'}))
-    
+    latitud = forms.DecimalField(label = 'Latitud', decimal_places=7, max_digits=11, widget=forms.NumberInput(attrs={'class':'input-adult-1', 'readonly':'True'}))
+    longitud = forms.DecimalField(label = 'Longitud', decimal_places=7, max_digits=11, widget=forms.NumberInput(attrs={'class':'input-adult-1', 'readonly':'True'}))
+
     estado_civil = forms.ChoiceField(label="Estado civil", choices=CATEGORIAS_ESTADO_CIVIL, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
     ocupacion = forms.ChoiceField(label="¿A qué se dedica actualmente?", choices=CATEGORIAS_OCUPACION, widget=forms.Select(attrs={'class':'input-adult-1 large-input'}))
     ocupacion_anterior = forms.ChoiceField(label="¿Y anteriormente?", choices=CATEGORIAS_OCUPACION, widget=forms.Select(attrs={'class':'input-adult-1 large-input'}))
     seguridad_social = forms.ChoiceField(label="Seguridad social", choices=CATEGORIAS_SS, widget=forms.Select(attrs={'class':'input-adult-1 large-input'}))
-    seguridad_social_otro = forms.CharField(label='', required=False, widget=forms.TextInput(attrs={'placeholder':'¿Cuál?', 'class':'input-adult-1'}))
+    seguridad_social_otro = forms.CharField(label='', required=False, widget=forms.TextInput(attrs={'placeholder':'¿Cuál?', 'class':'input-adult-1 hide'}))
     utiliza_seguridad_social = forms.BooleanField(label="¿Los utiliza?", required=False)
     
     acompanante = forms.ChoiceField(label="¿Con quién vive?", choices=CATEGORIAS_ACOMPANANTE, widget=forms.Select(attrs={'class':'input-adult-1 large-input'}))
-    acompanante_otro = forms.CharField(label='', required=False, widget=forms.TextInput(attrs={'placeholder':'¿Quién?', 'class':'input-adult-1 large-input'}))
+    acompanante_otro = forms.CharField(label='', required=False, widget=forms.TextInput(attrs={'placeholder':'¿Quién?', 'class':'input-adult-1 large-input hide'}))
     acompanante_sexo = forms.ChoiceField(label="Sexo de acompañante", required=False, choices=CATEGORIAS_SEXO, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
     check_acompanante_edad = forms.BooleanField(label="¿Se conoce la edad del acompañante?", required=False)
-    acompanante_edad = forms.IntegerField(required=False, widget=forms.NumberInput(attrs={'class':'input-adult-1', 'placeholder':'Edad acompañante'}))
+    acompanante_edad = forms.IntegerField(required=False, widget=forms.NumberInput(attrs={'class':'input-adult-1 hide', 'placeholder':'Edad acompañante'}))
     
     check_cuidador = forms.BooleanField(label="¿Tiene cuidador?", required=False)
     cuidador = forms.ChoiceField(label="Relación", required=False, choices=CATEGORIAS_CUIDADOR, widget=forms.Select(attrs={'class':'input-adult-1'}))
-    cuidador_otro = forms.CharField(label='', required=False, widget=forms.TextInput(attrs={'placeholder':'¿Quién?', 'class':'input-adult-1 large-input'}))
+    cuidador_otro = forms.CharField(label='', required=False, widget=forms.TextInput(attrs={'placeholder':'¿Quién?', 'class':'input-adult-1 large-input hide'}))
     cuidador_sexo = forms.ChoiceField(label="Sexo del cuidador", required=False, choices=CATEGORIAS_SEXO, widget=forms.Select(attrs={'class':'input-adult-1 small-input'}))
     check_cuidador_edad = forms.BooleanField(label="¿Se conoce la edad del cuidador?", required=False)
-    cuidador_edad = forms.IntegerField(required=False, widget=forms.NumberInput(attrs={'placeholder':'Edad cuidador', 'class':'input-adult-1'}))
+    cuidador_edad = forms.IntegerField(required=False, widget=forms.NumberInput(attrs={'placeholder':'Edad cuidador', 'class':'input-adult-1 hide'}))
     
     nombres_profesional = forms.CharField(label="", widget=forms.TextInput(attrs={'placeholder':'Nombre(s) Profesional en servicios', 'class':'input-adult-1 large-input'}))
     apellido_paterno_profesional = forms.CharField(label="", widget=forms.TextInput(attrs={'placeholder':'Ap. Paterno Profesional en servicios', 'class':'input-adult-1 large-input'}))
