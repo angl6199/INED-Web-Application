@@ -10,7 +10,7 @@ body{
 }
 
 /* Header styles */
-header div{
+header #top-bar{
     display: flex;
     align-items: center;
     padding: 10px 0 10px 40px;
@@ -21,10 +21,11 @@ header img{
     width: 220px;
     height: 50px;
 }
-header h1{
+header div h1{
     display: block;
     height: auto;
-    font-size: 16px;
+    font-size: 14px;
+    color: #929391;
     font-weight: 600;
     margin-bottom: 0;
 }
@@ -89,6 +90,31 @@ header nav li a:hover{
     color: black;
     background-size: 100% 2px;
     opacity: 0.8;
+}
+#tecbutton{
+    background-color: #0055A4;
+    margin-left: 26rem;
+    border: none;
+}
+#tecbutton:focus{
+    box-shadow: none;
+}
+#teclogo{
+    margin-left: 1rem;
+    width: 2.2rem;
+    height: 2.2rem;
+}
+.modal-body a{
+    text-decoration: none;
+    color: #0055A4;
+    font-size: 15px;
+    text-align: center;
+}
+.modal-body h5{
+    font-size: 15px;
+}
+.modal-body span{
+    color: #ABACA3;
 }
 
 /* Content styles */
