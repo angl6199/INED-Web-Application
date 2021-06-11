@@ -142,6 +142,7 @@ class AdultoMayor(models.Model):
     )
 
     # Datos generales
+    idp = models.CharField(max_length=21, blank=True, null=True)
     nombres = models.CharField(max_length=200)
     apellido_paterno = models.CharField(max_length=200)
     apellido_materno = models.CharField(max_length=200, blank=True, null=True)
@@ -155,6 +156,17 @@ class AdultoMayor(models.Model):
     telefono = models.CharField(max_length=15, blank=True, null=True)
     latitud = models.DecimalField(decimal_places=7, max_digits=12)
     longitud = models.DecimalField(decimal_places=7, max_digits=12)
+    check_direccion = models.BooleanField()
+    calle = models.CharField(max_length=300, blank=True, null=True)
+    num_interno = models.CharField(max_length=300, blank=True, null=True)
+    num_externo = models.CharField(max_length=300, blank=True, null=True)
+    colonia = models.CharField(max_length=300, blank=True, null=True)
+    codigo_pos = models.IntegerField(blank=True, null=True)
+    delegacion = models.CharField(max_length=300, blank=True, null=True)
+    entre1 = models.CharField(max_length=300, blank=True, null=True)
+    entre2 = models.CharField(max_length=300, blank=True, null=True)
+    
+
 
     # Cedula evalucaion riesgo
     estado_civil = models.CharField(max_length=100, choices=CATEGORIAS_ESTADO_CIVIL)

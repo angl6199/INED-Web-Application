@@ -11,6 +11,10 @@
 
     <div class="container-adult-form" id="cont1">
         <h3>DATOS DE IDENTIFICACIÓN</h3>
+        <div>
+            {{form.idp.errors}}
+            {{form.idp}}
+        </div>
         <div class="adult-form-multiple">
             {{form.nombres.errors}}
             {{form.nombres}}
@@ -59,6 +63,33 @@
                 {{form.longitud.label_tag}}
                 {{form.longitud}}
             </span>
+        </div>
+        <div class="adult-form-multiple">
+            <span>
+                {{form.check_direccion.errors}}
+                {{form.check_direccion.label_tag}}
+                {{form.check_direccion}}
+            </span>
+            {{form.calle.errors}}
+            {{form.calle}}
+            {{form.num_externo.errors}}
+            {{form.num_externo}}
+            {{form.num_interno.errors}}
+            {{form.num_interno}}
+        </div>
+        <div class="adult-form-multiple">
+            {{form.colonia.errors}}
+            {{form.colonia}}
+            {{form.codigo_pos.errors}}
+            {{form.codigo_pos}}
+            {{form.delegacion.errors}}
+            {{form.delegacion}}
+        </div>
+        <div class="adult-form-multiple">
+            {{form.entre1.errors}}
+            {{form.entre1}}
+            {{form.entre2.errors}}
+            {{form.entre2}}
         </div>
     
     </div>
@@ -171,7 +202,7 @@
                 momento, tiene usted alguna dificultad para (actividad)?</p>
         </div>
         <div>
-            <table class="table table-bordered table-actividades-b">
+            <table id="table1" class="table table-bordered table-actividades-b">
                 <thead>
                   <tr>
                     <th scope="col" rowspan="2">¿En este momento,<br>tiene usted dificultad<br>para...</th>
@@ -358,7 +389,7 @@
                           <span style="font-weight: bolder;">TOTAL</span>
                       </td>
                       <td colspan="4">
-
+                          <span class="float-end me-2" style="font-weight: bolder;" id="tot1">0</span>
                       </td>
                   </tr>
                 </tbody>
@@ -370,7 +401,7 @@
             <p style="color: #acacac;">Calificar máximo un punto por pregunta.</p>
         </div>
         <div>
-            <table class="table table-bordered table-actividades-b">
+            <table id="table2" class="table table-bordered table-actividades-b">
                 <thead>
                     <tr>
                         <th scope="col">ACTIVIDADES INSTRUMENTADAS DE LA VIDA DIARIA (LAWTON)</th>
@@ -489,7 +520,9 @@
                             </span>
                         </td>
                         <td>
-
+                            <span id="tot2" class="float-end me-2" style="font-weight: bolder">
+                                0
+                            </span>
                         </td>
                     </tr>
                 </tbody>
@@ -542,7 +575,7 @@
             <p style="color: #acacac;">Si total es 4 o más = Activo.</p>
         </div>
         <div>
-            <table class="table table-bordered table-actividades-b">
+            <table id="table3" class="table table-bordered table-actividades-b">
                 <thead>
                     <tr>
                         <th>
@@ -600,11 +633,13 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td style="font-weight: bolder">
                             TOTAL
                         </td>
                         <td>
-
+                            <span id="tot3" class="float-end me-5" style="font-weight: bolder">
+                                0
+                            </span>
                         </td>
                     </tr>
                 </tbody>
@@ -615,7 +650,7 @@
             <p style="color: #acacac;">Si total es 3 o más = Fragilidad.</p>
         </div>
         <div>
-            <table class="table table-bordered table-actividades-b">
+            <table id="table4" class="table table-bordered table-actividades-b">
                 <thead>
                     <tr>
                         <th>
@@ -673,11 +708,13 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td style="font-weight: bolder">
                             TOTAL
                         </td>
                         <td>
-
+                            <span id="tot4" class="float-end me-5" style="font-weight: bolder">
+                                0
+                            </span>
                         </td>
                     </tr>
                 </tbody>
